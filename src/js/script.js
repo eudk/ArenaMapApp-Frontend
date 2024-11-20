@@ -1,13 +1,13 @@
 // Map setup
 const centerCoordinates = [55.62533433976489, 12.573634292952859];
-const map = L.map('map').setView(centerCoordinates, 19);
+const map = L.map('map').setView(centerCoordinates, 18);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
-    attribution: 'Dette er en hovedopgave for datamatiker uddannelsen'
+    attribution: 'Dette er en hovedopgave'
 }).addTo(map);
 
-// Add markers
+//  markers
 const markers = [
     { lat: 55.625334, lng: 12.573634, popup: "Marker 1" },
     { lat: 55.625350, lng: 12.573620, popup: "Marker 2" },
@@ -22,7 +22,34 @@ markers.forEach(marker => {
         .bindPopup(marker.popup);
 });
 
-// Check  location
+// Dropdown 
+const floorSelect = document.getElementById('floor-select');
+
+floorSelect.addEventListener('change', event => {
+    const selectedFloor = event.target.value;
+
+    console.log(`Selected floor: Etage ${selectedFloor}`);
+
+    map.eachLayer(layer => {
+        if (layer instanceof L.Marker) {
+            map.removeLayer(layer);
+        }
+    });
+
+    // markers på hver etage
+    if (selectedFloor === "1") {
+        L.marker([55.625334, 12.573634]).addTo(map).bindPopup("Etage 1 - Marker 1");
+        L.marker([55.625350, 12.573620]).addTo(map).bindPopup("Etage 1 - Marker 2");
+    } else if (selectedFloor === "2") {
+        L.marker([55.625340, 12.573630]).addTo(map).bindPopup("Etage 2 - Marker 1");
+        L.marker([55.625320, 12.573640]).addTo(map).bindPopup("Etage 2 - Marker 2");
+    } else if (selectedFloor === "3") {
+        L.marker([55.625345, 12.573625]).addTo(map).bindPopup("Etage 3 - Marker 1");
+        L.marker([55.625315, 12.573635]).addTo(map).bindPopup("Etage 3 - Marker 2");
+    }
+});
+
+// Brugers placering
 function checkLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {

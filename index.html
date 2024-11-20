@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaflet Map</title>
+    <title>Arena kort demo</title>
     <link rel="stylesheet" href="src/css/styles.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
     <div id="map"></div>
     <button id="login-button">Medarbejder Login</button>
+    <select id="floor-select">
+        <option value="1" selected>Etage 1</option>
+        <option value="2">Etage 2</option>
+        <option value="3">Etage 3</option>
+    </select>
     <div id="message"></div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="src/js/script.js"></script>

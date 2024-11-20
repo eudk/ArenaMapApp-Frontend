@@ -31,9 +31,23 @@ body {
     background-color: #0056b3;
 }
 
-#message {
+#floor-select {
     position: absolute;
     top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    z-index: 1000;
+}
+
+#message {
+    position: absolute;
+    top: 50px;
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(255, 0, 0, 0.8);
@@ -42,5 +56,5 @@ body {
     border-radius: 5px;
     font-size: 14px;
     z-index: 1000;
-    display: none; 
+    display: none;
 }
