@@ -7,49 +7,56 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Dette er en hovedopgave'
 }).addTo(map);
 
-//  markers
-const markers = [
-    { lat: 55.625334, lng: 12.573634, popup: "Marker 1" },
-    { lat: 55.625350, lng: 12.573620, popup: "Marker 2" },
-    { lat: 55.625310, lng: 12.573640, popup: "Marker 3" },
-    { lat: 55.625320, lng: 12.573660, popup: "Marker 4" },
-    { lat: 55.625340, lng: 12.573650, popup: "Marker 5" }
+// bounds til overlay
+const bounds = [
+    [55.624534, 12.572634], // Southwest corner
+    [55.626134, 12.574634]  // Northeast corner
 ];
 
-markers.forEach(marker => {
-    L.marker([marker.lat, marker.lng])
-        .addTo(map)
-        .bindPopup(marker.popup);
-});
+//  image overlays 
+const overlays = {
+    "1": L.imageOverlay('src/assets/1.png', bounds),
+    "2": L.imageOverlay('src/assets/2.png', bounds),
+    "3": L.imageOverlay('src/assets/3.png', bounds)
+};
 
-// Dropdown 
+
+const markerLayers = {
+    "1": L.layerGroup(),
+    "2": L.layerGroup(),
+    "3": L.layerGroup()
+};
+
+//generering af random markers på kortet til demo
+function generateRandomMarkers(layer, count) {
+    for (let i = 0; i < count; i++) {
+        const lat = centerCoordinates[0] + (Math.random() - 0.5) * 0.0005; 
+        const lng = centerCoordinates[1] + (Math.random() - 0.5) * 0.0005;
+        const marker = L.marker([lat, lng]).bindPopup(`Etage marker ${i + 1}`);
+        layer.addLayer(marker);
+    }
+}
+
+generateRandomMarkers(markerLayers["1"], 5); 
+generateRandomMarkers(markerLayers["2"], 5); 
+generateRandomMarkers(markerLayers["3"], 5); 
+
+overlays["1"].addTo(map);
+markerLayers["1"].addTo(map);
+
 const floorSelect = document.getElementById('floor-select');
 
 floorSelect.addEventListener('change', event => {
     const selectedFloor = event.target.value;
 
-    console.log(`Selected floor: Etage ${selectedFloor}`);
+    //bruger lokation
+    Object.values(overlays).forEach(overlay => map.removeLayer(overlay));
+    Object.values(markerLayers).forEach(layer => map.removeLayer(layer));
 
-    map.eachLayer(layer => {
-        if (layer instanceof L.Marker) {
-            map.removeLayer(layer);
-        }
-    });
-
-    // markers på hver etage
-    if (selectedFloor === "1") {
-        L.marker([55.625334, 12.573634]).addTo(map).bindPopup("Etage 1 - Marker 1");
-        L.marker([55.625350, 12.573620]).addTo(map).bindPopup("Etage 1 - Marker 2");
-    } else if (selectedFloor === "2") {
-        L.marker([55.625340, 12.573630]).addTo(map).bindPopup("Etage 2 - Marker 1");
-        L.marker([55.625320, 12.573640]).addTo(map).bindPopup("Etage 2 - Marker 2");
-    } else if (selectedFloor === "3") {
-        L.marker([55.625345, 12.573625]).addTo(map).bindPopup("Etage 3 - Marker 1");
-        L.marker([55.625315, 12.573635]).addTo(map).bindPopup("Etage 3 - Marker 2");
-    }
+    overlays[selectedFloor].addTo(map);
+    markerLayers[selectedFloor].addTo(map);
 });
 
-// Brugers placering
 function checkLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
@@ -83,7 +90,7 @@ function checkLocation() {
 function getDistanceFromLatLonInMeters(lat1, lon1, lat2, lon2) {
     const R = 6371000; // Radius 
     const dLat = deg2rad(lat2 - lat1);
-    const dLon = deg2rad(lon2 - lon1);
+    const dLon = deg2rad(lon1 - lon2);
     const a = 
         Math.sin(dLat / 2) * Math.sin(dLat / 2) +
         Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
