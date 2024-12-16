@@ -1,0 +1,41 @@
+/* floor.css */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #270341;
+    height: 50rem;
+}
+
+img {
+    width: 100%; /* Sørg for, at billedet fylder hele skærmen */
+    height: auto;
+    margin: 30px 0 0 0; /* Tilføjer 20px margin øverst, så billedet kommer længere ned */
+    max-width: 100%;
+}
+
+header {
+    background-color: #000000;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+nav {
+    margin-top: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    margin: 0 5px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+nav a:hover {
+    background-color: #0056b3;
+}
