@@ -1,4 +1,4 @@
-/* floor.css */
+/* 
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -9,21 +9,28 @@ body {
 }
 
 img {
-    width: 100%; /* Sørg for, at billedet fylder hele skærmen */
+    width: 50%; 
     height: auto;
-    margin: 30px 0 0 0; /* Tilføjer 20px margin øverst, så billedet kommer længere ned */
+    margin: 30px 0 0 0; 
     max-width: 100%;
 }
 
+
+
 header {
-    background-color: #000000;
+    background-color: #0c0823;
     color: white;
     padding: 10px;
     text-align: center;
 }
 
+header img {
+    max-width: 150px; 
+    height: auto;
+}
+
 nav {
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 nav a {
@@ -38,4 +45,156 @@ nav a {
 
 nav a:hover {
     background-color: #0056b3;
+} */
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Styling til header */
+header {
+    background-color: #270645;
+    color: white;
+    padding: 20px 5%; /* Justér padding for at give plads i siderne */
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; /* Sørger for at logo og navbar er i hver sin side */
+}
+
+/* Styling til logoet */
+header .logo {
+    max-width: 150px; 
+    height: auto;
+    margin-right: auto; /* Sørger for at logo bliver til venstre */
+}
+
+/* Styling til navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Skubber navbar helt til højre */
+}
+
+/* Styling af navbarens elementer */
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center; 
+}
+
+.navbar ul li {
+    position: relative; 
+    margin: 0 10px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    background-color: #270645;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.navbar ul li a:hover {
+    background-color: #0056b3;
+    color: #000000;
+}
+
+/* Dropdown-menu styling */
+.dropdown-menu {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    display: none; 
+    background-color: #182A61;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.dropdown-menu li a {
+    color: #000000;
+    background-color: transparent;
+    padding: 10px 20px;
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    border-radius: 0;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f4f4f4;
+    color: #000000;
+}
+
+/* Styling til knap */
+header .login button {
+    background-color: #007BFF; /* Blå farve */
+    color: white; /* Hvid tekst */
+    border: none; /* Fjern kant */
+    padding: 10px 20px; /* Indvendig afstand */
+    border-radius: 5px; /* Rundede hjørner */
+    font-size: 16px; /* Tekststørrelse */
+    cursor: pointer; /* Markør ændres ved hover */
+    font-family: 'Montserrat', sans-serif; /* Match font med resten */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Glidende effekt ved hover */
+}
+
+header .login button:hover {
+    background-color: #0056b3; /* Mørkere blå ved hover */
+    transform: scale(1.05); /* Gør knappen lidt større */
+}
+
+header .login button:active {
+    background-color: #003f7f; /* Endnu mørkere blå ved klik */
+    transform: scale(0.95); /* Gør knappen lidt mindre ved klik */
+}
+
+/* Placering af knappen */
+header .login {
+    margin-left: 20px; /* Plads mellem navbar og knap */
+    display: flex;
+    align-items: center;
+}
+
+
+/* Styling til baggrunden */
+body {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #182A61;
+    height: 50rem;
+}
+
+/* Styling til footer */
+footer {
+    background-color: #270645; /* Match headerens farve */
+    color: white;
+    padding: 20px 10%;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    margin-top: 30px; /* Plads over footeren */
+    border-top: 3px solid #007BFF; /* En linje for visuelt fokus */
+}
+
+footer .footer-container {
+    max-width: 1200px; /* Begrænset bredde for bedre layout */
+    margin: 0 auto; /* Centrer indholdet */
+    line-height: 1.6; /* Gør teksten letlæselig */
+}
+
+footer p {
+    margin: 5px 0; /* Juster afstand mellem linjerne */
+}
+
+footer strong {
+    color: #007BFF; /* Gør overskriften mere iøjnefaldende */
 }
