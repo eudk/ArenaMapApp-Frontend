@@ -1,78 +1,32 @@
-/* 
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    background-color: #270341;
-    height: 50rem;
-}
-
-img {
-    width: 50%; 
-    height: auto;
-    margin: 30px 0 0 0; 
-    max-width: 100%;
-}
-
-
-
-header {
-    background-color: #0c0823;
-    color: white;
-    padding: 10px;
-    text-align: center;
-}
-
-header img {
-    max-width: 150px; 
-    height: auto;
-}
-
-nav {
-    margin-top: 40px;
-}
-
-nav a {
-    text-decoration: none;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    margin: 0 5px;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-nav a:hover {
-    background-color: #0056b3;
-} */
-
-
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* Styling til header */
 header {
     background-color: #270645;
     color: white;
-    padding: 20px 5%; /* Justér padding for at give plads i siderne */
+    padding: 10px 5%;
     display: flex;
-    align-items: center; 
-    justify-content: space-between; /* Sørger for at logo og navbar er i hver sin side */
+    align-items: center;
+    justify-content: space-between;
 }
 
 /* Styling til logoet */
 header .logo {
-    max-width: 150px; 
+    max-width: 100px; 
     height: auto;
-    margin-right: auto; /* Sørger for at logo bliver til venstre */
+    margin-left: 20%;
+    margin-right: 40px; /* Reducer afstanden mellem logo og navbar */
 }
 
 /* Styling til navbar */
 .navbar {
     display: flex;
     align-items: center;
-    margin-left: auto; /* Skubber navbar helt til højre */
+    margin-left: 10%;
+    margin-right: 30px;
+    gap: 0px; /* Bruger gap for let justering */
+    flex-grow: 1; /* Sørger for fleksibilitet i bredden */
+    justify-content: flex-start; /* Placer navbaren tættere på logoet */
 }
 
 /* Styling af navbarens elementer */
@@ -81,7 +35,7 @@ header .logo {
     margin: 0;
     padding: 0;
     display: flex;
-    align-items: center; 
+    align-items: center;
 }
 
 .navbar ul li {
@@ -102,6 +56,38 @@ header .logo {
     background-color: #0056b3;
     color: #000000;
 }
+
+/* Placering af login-knap */
+header .login {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 20%; /* Sørger for, at login-knappen placeres til højre */
+}
+
+/* Styling til knappen */
+header .login button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+header .login button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+header .login button:active {
+    background-color: #003f7f;
+    transform: scale(0.95);
+}
+
 
 /* Dropdown-menu styling */
 .dropdown-menu {
@@ -132,45 +118,115 @@ header .logo {
     color: #000000;
 }
 
-/* Styling til knap */
-header .login button {
-    background-color: #007BFF; /* Blå farve */
-    color: white; /* Hvid tekst */
-    border: none; /* Fjern kant */
-    padding: 10px 20px; /* Indvendig afstand */
-    border-radius: 5px; /* Rundede hjørner */
-    font-size: 16px; /* Tekststørrelse */
-    cursor: pointer; /* Markør ændres ved hover */
-    font-family: 'Montserrat', sans-serif; /* Match font med resten */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Glidende effekt ved hover */
-}
-
-header .login button:hover {
-    background-color: #0056b3; /* Mørkere blå ved hover */
-    transform: scale(1.05); /* Gør knappen lidt større */
-}
-
-header .login button:active {
-    background-color: #003f7f; /* Endnu mørkere blå ved klik */
-    transform: scale(0.95); /* Gør knappen lidt mindre ved klik */
-}
-
-/* Placering af knappen */
-header .login {
-    margin-left: 20px; /* Plads mellem navbar og knap */
-    display: flex;
-    align-items: center;
-}
-
-
-/* Styling til baggrunden */
+/* Styling til body for centrering */
 body {
     font-family: 'Montserrat', sans-serif;
-    text-align: center;
     margin: 0;
     padding: 0;
-    background-color: #182A61;
-    height: 50rem;
+    background-color: #182A61; /* Baggrundsfarve */
+    justify-content: center; /* Centrer horisontalt */
+    align-items: center; /* Centrer vertikalt */
+    height: 100vh; /* Gør, at body fylder hele skærmhøjden */
+    text-align: center;
+}
+
+/* Styling til kortets container */
+.map-container {
+    position: relative;
+    height: auto;
+    width: 60%; /* Øg bredden af kortet */
+    max-width: 1500px; /* Sæt en større maksimal bredde */
+    background-color: #182A61; /* Baggrundsfarve */
+    padding: 50px; /* Giv lidt afstand omkring billedet */
+    border: 10px solid #270645; /* Valgfri ramme */
+    border-radius: 10px; /* Runde hjørner */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Skygge */
+
+    /* Centrer containeren i midten af skærmen */
+    margin: 0 auto; /* Centrer containeren horisontalt */
+    justify-content: center; /* Centrer indhold horisontalt */
+    align-items: center; /* Centrer indhold vertikalt */
+    
+}
+
+/* Styling til etagebillederne */
+.map-container img {
+    display: block;
+    width: 100%; /* Fyld hele containerens bredde */
+    height: auto; /* Bevar billedets proportioner */
+    border-radius: 5px; /* Runde hjørner på billedet */
+}
+
+/* Styling for kort punkter */
+.point {
+    position: absolute;
+    width: 2.5rem; /* Start med en standard størrelse */
+    height: 2.5rem; 
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%; 
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s ease-in-out; /* Glat overgang ved ændring */
+}
+
+/* Default positioner for etage 0 */
+#bar-Etage0 { top: 77%; left: 45%; }
+#deli-Etage0 { top: 67%; left: 51%; }
+#merchandise-Etage0 { top: 83%; left: 55%; }
+#eventhall-Etage0 { top: 47%; left: 51%; }
+#menWC1-Etage0 { top: 57%; left: 29%; }
+#menWC2-Etage0 { top: 57%; left: 74%; }
+#womenWC1-Etage0 { top: 63%; left: 33%; }
+#womenWC2-Etage0 { top: 63%; left: 70%; }
+#vip1-Etage0 { top: 83%; left: 15%; }
+#vip2-Etage0 { top: 69%; left: 87%; }
+
+/* Default positioner for etage 1 */
+#bar1-Etage1 { top: 67%; left: 58%; }
+#bar2-Etage1 { top: 33%; left: 75%; }
+#bar3-Etage1 { top: 33%; left: 26%; }
+#deli1-Etage1 { top: 67%; left: 42%; }
+#deli2-Etage1 { top: 47%; left: 75%; }
+#deli3-Etage1 { top: 47%; left: 26%; }
+#merchandise-Etage1 { top: 63%; left: 31%; }
+#eventhall-Etage1 { top: 47%; left: 50%; }
+#menWC1-Etage1 { top: 26%; left: 75%; }
+#menWC2-Etage1 { top: 55%; left: 75%; }
+#menWC3-Etage1 { top: 40%; left: 26%; }
+#womenWC1-Etage1 { top: 40%; left: 75%; }
+#womenWC2-Etage1 { top: 26%; left: 26%; }
+#womenWC3-Etage1 { top: 55%; left: 26%; }
+#garderobe-Etage1 { top: 63%; left: 70%; }
+
+/* Default positioner for etage 3 */
+#bar1-Etage3 { top: 47%; left: 27%; }
+#bar2-Etage3 { top: 68%; left: 50%; }
+#bar3-Etage3 { top: 47%; left: 75%; }
+#eventhall-Etage3 { top: 47%; left: 50%; }
+#menWC1-Etage3 { top: 33%; left: 75%; }
+#menWC2-Etage3 { top: 55%; left: 75%; }
+#menWC3-Etage3 { top: 40%; left: 27%; }
+#menWC4-Etage3 { top: 67%; left: 39%; }
+#womenWC1-Etage3 { top: 40%; left: 75%; }
+#womenWC2-Etage3 { top: 33%; left: 27%; }
+#womenWC3-Etage3 { top: 54%; left: 27%; }
+#womenWC4-Etage3 { top: 67%; left: 61%; }
+
+/* Pop-up styling */
+.popup {
+    display: none;
+    position: absolute;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.popup .close {
+    cursor: pointer;
+    color: #007BFF;
+    text-decoration: underline;
 }
 
 /* Styling til footer */
@@ -197,4 +253,205 @@ footer p {
 
 footer strong {
     color: #007BFF; /* Gør overskriften mere iøjnefaldende */
+}
+
+/* Responsivitet med Bootstrap */ 
+@media (max-width: 1152px) {
+    .point {
+        width: 1.25rem; /* For punkter på skærme under 1152px */
+        height: 1.25rem;
+    }
+
+    /* Etage 0 */
+    #bar-Etage0 { top: 76%; left: 45%; }
+    #deli-Etage0 { top: 66%; left: 51%; }
+    #merchandise-Etage0 { top: 81%; left: 55%; }
+    #eventhall-Etage0 { top: 47%; left: 51%; }
+    #menWC1-Etage0 { top: 56%; left: 30%; }
+    #menWC2-Etage0 { top: 56%; left: 73%; }
+    #womenWC1-Etage0 { top: 62%; left: 34%; }
+    #womenWC2-Etage0 { top: 62%; left: 69%; }
+    #vip1-Etage0 { top: 81%; left: 17%; }
+    #vip2-Etage0 { top: 69%; left: 85%; }
+
+    /* Etage 1 */
+    #bar1-Etage1 { top: 67%; left: 56%; }
+    #bar2-Etage1 { top: 33%; left: 73%; }
+    #bar3-Etage1 { top: 33%; left: 29%; }
+    #deli1-Etage1 { top: 67%; left: 44%; }
+    #deli2-Etage1 { top: 47%; left: 73%; }
+    #deli3-Etage1 { top: 47%; left: 29%; }
+    #merchandise-Etage1 { top: 62%; left: 33%; }
+    #eventhall-Etage1 { top: 47%; left: 50%; }
+    #menWC1-Etage1 { top: 27%; left: 73%; }
+    #menWC2-Etage1 { top: 55%; left: 73%; }
+    #menWC3-Etage1 { top: 40%; left: 29%; }
+    #womenWC1-Etage1 { top: 40%; left: 73%; }
+    #womenWC2-Etage1 { top: 27%; left: 29%; }
+    #womenWC3-Etage1 { top: 55%; left: 29%; }
+    #garderobe-Etage1 { top: 62%; left: 69%; }
+
+    /* Etage 3 */
+    #bar1-Etage3 { top: 47%; left: 28%; }
+    #bar2-Etage3 { top: 68%; left: 50%; }
+    #bar3-Etage3 { top: 47%; left: 74%; }
+    #eventhall-Etage3 { top: 47%; left: 50%; }
+    #menWC1-Etage3 { top: 34%; left: 74%; }
+    #menWC2-Etage3 { top: 54%; left: 74%; }
+    #menWC3-Etage3 { top: 40%; left: 28%; }
+    #menWC4-Etage3 { top: 66%; left: 40%; }
+    #womenWC1-Etage3 { top: 40%; left: 74%; }
+    #womenWC2-Etage3 { top: 34%; left: 28%; }
+    #womenWC3-Etage3 { top: 54%; left: 28%; }
+    #womenWC4-Etage3 { top: 66%; left: 60%; }
+}
+
+@media (max-width: 960px) {
+    .point {
+        width: 1rem; /* For punkter på skærme under 960px */
+        height: 1rem;
+    }
+
+    /* Etage 0 */
+    #bar-Etage0 { top: 75%; left: 45%; }
+    #deli-Etage0 { top: 66%; left: 51%; }
+    #merchandise-Etage0 { top: 80%; left: 54%; }
+    #eventhall-Etage0 { top: 47%; left: 51%; }
+    #menWC1-Etage0 { top: 56%; left: 31%; }
+    #menWC2-Etage0 { top: 56%; left: 72%; }
+    #womenWC1-Etage0 { top: 62%; left: 34%; }
+    #womenWC2-Etage0 { top: 62%; left: 68%; }
+    #vip1-Etage0 { top: 80%; left: 20%; }
+    #vip2-Etage0 { top: 69%; left: 83%; }
+    
+    /* Etage 1 */
+    #bar1-Etage1 { top: 66%; left: 56%; }
+    #bar2-Etage1 { top: 34%; left: 73%; }
+    #bar3-Etage1 { top: 34%; left: 29%; }
+    #deli1-Etage1 { top: 66%; left: 44%; }
+    #deli2-Etage1 { top: 47%; left: 73%; }
+    #deli3-Etage1 { top: 47%; left: 29%; }
+    #merchandise-Etage1 { top: 62%; left: 33%; }
+    #eventhall-Etage1 { top: 47%; left: 50%; }
+    #menWC1-Etage1 { top: 28%; left: 73%; }
+    #menWC2-Etage1 { top: 54%; left: 73%; }
+    #menWC3-Etage1 { top: 40%; left: 29%; }
+    #womenWC1-Etage1 { top: 40%; left: 73%; }
+    #womenWC2-Etage1 { top: 28%; left: 29%; }
+    #womenWC3-Etage1 { top: 54%; left: 29%; }
+    #garderobe-Etage1 { top: 62%; left: 68%; }
+
+    /* Etage 3 */
+    #bar1-Etage3 { top: 47%; left: 29%; }
+    #bar2-Etage3 { top: 67%; left: 50%; }
+    #bar3-Etage3 { top: 47%; left: 73%; }
+    #eventhall-Etage3 { top: 47%; left: 50%; }
+    #menWC1-Etage3 { top: 34%; left: 73%; }
+    #menWC2-Etage3 { top: 54%; left: 73%; }
+    #menWC3-Etage3 { top: 40%; left: 29%; }
+    #menWC4-Etage3 { top: 65%; left: 41%; }
+    #womenWC1-Etage3 { top: 40%; left: 73%; }
+    #womenWC2-Etage3 { top: 34%; left: 29%; }
+    #womenWC3-Etage3 { top: 54%; left: 29%; }
+    #womenWC4-Etage3 { top: 65%; left: 60%; }
+}
+
+@media (max-width: 768px) {
+    .point {
+        width: 0.75rem; /* For punkter på skærme under 768px */
+        height: 0.75rem;
+    }
+
+    /* Etage 0 */
+    #bar-Etage0 { top: 74%; left: 47%; }
+    #deli-Etage0 { top: 65%; left: 51%; }
+    #merchandise-Etage0 { top: 78%; left: 54%; }
+    #eventhall-Etage0 { top: 47%; left: 51%; }
+    #menWC1-Etage0 { top: 56%; left: 32%; }
+    #menWC2-Etage0 { top: 56%; left: 71%; }
+    #womenWC1-Etage0 { top: 61%; left: 36%; }
+    #womenWC2-Etage0 { top: 61%; left: 67%; }
+    #vip1-Etage0 { top: 79%; left: 20%; }
+    #vip2-Etage0 { top: 68%; left: 81%; }
+
+    /* Etage 1 */
+    #bar1-Etage1 { top: 65%; left: 56%; }
+    #bar2-Etage1 { top: 35%; left: 72%; }
+    #bar3-Etage1 { top: 35%; left: 30%; }
+    #deli1-Etage1 { top: 65%; left: 44%; }
+    #deli2-Etage1 { top: 47%; left: 72%; }
+    #deli3-Etage1 { top: 47%; left: 30%; }
+    #merchandise-Etage1 { top: 61%; left: 34%; }
+    #eventhall-Etage1 { top: 47%; left: 50%; }
+    #menWC1-Etage1 { top: 29%; left: 72%; }
+    #menWC2-Etage1 { top: 54%; left: 72%; }
+    #menWC3-Etage1 { top: 41%; left: 30%; }
+    #womenWC1-Etage1 { top: 41%; left: 72%; }
+    #womenWC2-Etage1 { top: 29%; left: 30%; }
+    #womenWC3-Etage1 { top: 54%; left: 30%; }
+    #garderobe-Etage1 { top: 61%; left: 67%; }
+
+    /* Etage 3 */
+    #bar1-Etage3 { top: 47%; left: 31%; }
+    #bar2-Etage3 { top: 66%; left: 50%; }
+    #bar3-Etage3 { top: 47%; left: 71%; }
+    #eventhall-Etage3 { top: 47%; left: 50%; }
+    #menWC1-Etage3 { top: 35%; left: 71%; }
+    #menWC2-Etage3 { top: 54%; left: 71%; }
+    #menWC3-Etage3 { top: 41%; left: 31%; }
+    #menWC4-Etage3 { top: 64%; left: 42%; }
+    #womenWC1-Etage3 { top: 41%; left: 71%; }
+    #womenWC2-Etage3 { top: 35%; left: 31%; }
+    #womenWC3-Etage3 { top: 54%; left: 31%; }
+    #womenWC4-Etage3 { top: 64%; left: 59%; }
+}
+
+@media (max-width: 576px) {
+    .point {
+        width: 0.5rem; /* For punkter på skærme under 576px */
+        height: 0.5rem;
+    }
+
+    /* Etage 0 */
+    #bar-Etage0 { top: 71%; left: 47%; }
+    #deli-Etage0 { top: 63%; left: 51%; }
+    #merchandise-Etage0 { top: 75%; left: 54%; }
+    #eventhall-Etage0 { top: 47%; left: 51%; }
+    #menWC1-Etage0 { top: 55%; left: 34%; }
+    #menWC2-Etage0 { top: 55%; left: 68%; }
+    #womenWC1-Etage0 { top: 60%; left: 38%; }
+    #womenWC2-Etage0 { top: 60%; left: 65%; }
+    #vip1-Etage0 { top: 76%; left: 25%; }
+    #vip2-Etage0 { top: 66%; left: 77%; }
+
+    /* Etage 1 */
+    #bar1-Etage1 { top: 63%; left: 56%; }
+    #bar2-Etage1 { top: 37%; left: 68%; }
+    #bar3-Etage1 { top: 37%; left: 34%; }
+    #deli1-Etage1 { top: 63%; left: 44%; }
+    #deli2-Etage1 { top: 48%; left: 68%; }
+    #deli3-Etage1 { top: 48%; left: 34%; }
+    #merchandise-Etage1 { top: 59%; left: 37%; }
+    #eventhall-Etage1 { top: 47%; left: 50%; }
+    #menWC1-Etage1 { top: 32%; left: 68%; }
+    #menWC2-Etage1 { top: 54%; left: 68%; }
+    #menWC3-Etage1 { top: 42%; left: 34%; }
+    #womenWC1-Etage1 { top: 42%; left: 68%; }
+    #womenWC2-Etage1 { top: 32%; left: 34%; }
+    #womenWC3-Etage1 { top: 54%; left: 34%; }
+    #garderobe-Etage1 { top: 59%; left: 64%; }
+
+    /* Etage 3 */
+    #bar1-Etage3 { top: 47%; left: 34%; }
+    #bar2-Etage3 { top: 64%; left: 50%; }
+    #bar3-Etage3 { top: 47%; left: 67%; }
+    #eventhall-Etage3 { top: 47%; left: 50%; }
+    #menWC1-Etage3 { top: 37%; left: 67%; }
+    #menWC2-Etage3 { top: 53%; left: 67%; }
+    #menWC3-Etage3 { top: 42%; left: 34%; }
+    #menWC4-Etage3 { top: 62%; left: 43%; }
+    #womenWC1-Etage3 { top: 42%; left: 67%; }
+    #womenWC2-Etage3 { top: 37%; left: 34%; }
+    #womenWC3-Etage3 { top: 53%; left: 34%; }
+    #womenWC4-Etage3 { top: 62%; left: 58%; }
 }
