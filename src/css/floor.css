@@ -118,6 +118,80 @@ header .login button:active {
     color: #000000;
 }
 
+/* Dropdown-menu styling */
+.styled-dropdown {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 14px;
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    appearance: none; /* Fjern standard-browser-stil */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('../images/dropdown-icon.png'); /* Tilføj ikon */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+.styled-dropdown:focus {
+    outline: none;
+    border-color: #182A61;
+    box-shadow: 0 0 5px rgba(24, 42, 97, 0.5);
+}
+
+.search-container {
+    display: flex;
+    padding: 12px;
+    align-items: center; /* Centrer elementerne lodret */
+    gap: 0.5rem; /* Tilføj afstand mellem elementerne */
+    justify-content: center; /* Centrer elementerne horisontalt */
+    width: 100%; /* Sørg for, at containeren strækker sig over hele bredden */
+}
+
+#search-input {
+    width: 200px; /* Reduceret bredde */
+    padding: 10px; /* Indvendig polstring */
+    border: 1px solid #ccc; /* Lys grå kant */
+    border-radius: 5px; /* Rundede hjørner */
+    font-size: 14px; /* Skriftstørrelse */
+    transition: border-color 0.3s ease; /* Glat overgang for kantfarve */
+}
+
+#search-input:focus {
+    border-color: #182A61; /* Mørk blå kant ved fokus */
+    outline: none; /* Fjern standard fokus-ramme */
+    box-shadow: 0 0 5px rgba(24, 42, 97, 0.5); /* Blå skygge ved fokus */
+}
+
+.styled-button {
+    background-color: #182A61; /* Mørk blå baggrund */
+    color: #FFFFFF; /* Hvid tekst */
+    border: none; /* Fjern kant */
+    padding: 10px 20px; /* Indvendig polstring */
+    border-radius: 5px; /* Rundede hjørner */
+    font-size: 14px; /* Skriftstørrelse */
+    cursor: pointer; /* Skift til pointer ved hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Let skygge */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Glatte overgange */
+    margin-left: 0.5rem;
+}
+
+.styled-button:hover {
+    background-color: #f4f4f4; /* Lys baggrund ved hover */
+    color: #000000; /* Sort tekst ved hover */
+    transform: scale(1.05); /* Lidt større ved hover */
+}
+
+.styled-button:active {
+    transform: scale(0.95); /* Mindre når klikket */
+}
+
 /* Styling til body for centrering */
 body {
     font-family: 'Montserrat', sans-serif;
@@ -134,7 +208,7 @@ body {
 .map-container {
     position: relative;
     height: auto;
-    width: 60%; /* Øg bredden af kortet */
+    width: 70%; /* Øg bredden af kortet */
     max-width: 1500px; /* Sæt en større maksimal bredde */
     background-color: #182A61; /* Baggrundsfarve */
     padding: 50px; /* Giv lidt afstand omkring billedet */
@@ -160,19 +234,26 @@ body {
 /* Styling for kort punkter */
 .point {
     position: absolute;
-    width: 2.5rem; /* Start med en standard størrelse */
-    height: 2.5rem; 
+    width: 2.5rem;
+    height: 2.5rem;
     background-size: cover;
     background-position: center;
     border-radius: 50%; 
     cursor: pointer;
     transform: translate(-50%, -50%);
-    transition: all 0.2s ease-in-out; /* Glat overgang ved ændring */
+    transition: all 0.3s ease-in-out; /* Glat overgang ved ændring */
+}
+
+.point.active {
+    transform: translate(-50%, -50%) scale(1.2); /* Gør punktet større */
+    background-color: rgba(255, 255, 0, 0.8); /* Tilføj en lys farve */
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.7); /* Tilføj glød */
+    z-index: 11; /* Sørg for, at det er øverst */
 }
 
 /* Default positioner for etage 0 */
-#bar-Etage0 { top: 77%; left: 45%; }
-#deli-Etage0 { top: 67%; left: 51%; }
+#bar03-Etage0 { top: 78%; left: 46%; }
+#deli02-Etage0 { top: 67%; left: 51%; }
 #merchandise-Etage0 { top: 83%; left: 55%; }
 #eventhall-Etage0 { top: 47%; left: 51%; }
 #menWC1-Etage0 { top: 57%; left: 29%; }
@@ -183,12 +264,12 @@ body {
 #vip2-Etage0 { top: 69%; left: 87%; }
 
 /* Default positioner for etage 1 */
-#bar1-Etage1 { top: 67%; left: 58%; }
-#bar2-Etage1 { top: 33%; left: 75%; }
-#bar3-Etage1 { top: 33%; left: 26%; }
-#deli1-Etage1 { top: 67%; left: 42%; }
-#deli2-Etage1 { top: 47%; left: 75%; }
-#deli3-Etage1 { top: 47%; left: 26%; }
+#bar13-Etage1 { top: 67%; left: 58%; }
+#bar11-Etage1 { top: 33%; left: 75%; }
+#bar16-Etage1 { top: 33%; left: 26%; }
+#deli14-Etage1 { top: 67%; left: 42%; }
+#deli12-Etage1 { top: 47%; left: 75%; }
+#deli15-Etage1 { top: 47%; left: 26%; }
 #merchandise-Etage1 { top: 63%; left: 31%; }
 #eventhall-Etage1 { top: 47%; left: 50%; }
 #menWC1-Etage1 { top: 26%; left: 75%; }
@@ -200,9 +281,9 @@ body {
 #garderobe-Etage1 { top: 63%; left: 70%; }
 
 /* Default positioner for etage 3 */
-#bar1-Etage3 { top: 47%; left: 27%; }
-#bar2-Etage3 { top: 68%; left: 50%; }
-#bar3-Etage3 { top: 47%; left: 75%; }
+#bar35-Etage3 { top: 47%; left: 27%; }
+#bar33-Etage3 { top: 68%; left: 50%; }
+#bar31-Etage3 { top: 47%; left: 75%; }
 #eventhall-Etage3 { top: 47%; left: 50%; }
 #menWC1-Etage3 { top: 33%; left: 75%; }
 #menWC2-Etage3 { top: 55%; left: 75%; }
@@ -217,16 +298,64 @@ body {
 .popup {
     display: none;
     position: absolute;
-    background: white;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: #13215c; /* Baggrundsfarve */
+    color: white; /* Tekstfarve */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 10;
+    width: 220px; /* Justeret bredde for bedre tilpasning */
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem; /* Justeret skrifttype-størrelse */
+}
+
+/* Vis popup */
+.popup.active {
+    display: block;
+}
+
+.popup-link {
+    display: inline-block;
+    margin-top: 10px; /* Øget margin for at adskille linket fra beskrivelsen */
+    padding: 0.4rem 0.8rem;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.8rem; /* Passende font størrelse */
+}
+
+.popup-link:hover {
+    background-color: #0056b3;
 }
 
 .popup .close {
     cursor: pointer;
-    color: #007BFF;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    display: inline-block;
     text-decoration: underline;
+    margin-top: 10px;
+}
+
+.close {
+    cursor: pointer;
+    display: inline-block;
+    width: 20px; /* Juster størrelse af luk-knappen */
+    height: 20px;
+    background-image: url('path/to/Close.png'); /* Sørg for at angive korrekt sti til billedet */
+    background-size: cover; /* Sørger for, at billedet fylder knappen */
+    background-repeat: no-repeat;
+    margin-top: 10px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.close:hover {
+    opacity: 0.7; /* Giver en let effekt ved hover */
 }
 
 /* Styling til footer */
@@ -257,201 +386,337 @@ footer strong {
 
 /* Responsivitet med Bootstrap */ 
 @media (max-width: 1152px) {
+    .map-container {
+        width: 75%; /* Øger bredden lidt på mellemstore skærme */
+        padding: 40px; /* Juster padding */
+    }
+    
     .point {
-        width: 1.25rem; /* For punkter på skærme under 1152px */
-        height: 1.25rem;
+        width: 1.5rem; /* Lidt større punkter på skærme under 1152px */
+        height: 1.5rem;
+    }
+
+    .popup {
+        height: 19%;
+        width: 19%;
+        font-size: 0.7rem;
+    }
+
+    .popup-link {
+        font-size: 0.7rem; /* Mindre font på mellemstore skærme */
+        padding: 0.35rem 0.7rem;
+    }
+
+    .close {
+        cursor: pointer;
+        display: inline-block;
+        width: 17.5px; /* Juster størrelse af luk-knappen */
+        height: 17.5px;
+        background-image: url('path/to/Close.png'); /* Sørg for at angive korrekt sti til billedet */
+        background-size: cover; /* Sørger for, at billedet fylder knappen */
+        background-repeat: no-repeat;
+        margin-top: 10px;
+        position: absolute;
+        top: 4px;
+        right: 4px;
+    }
+    
+    .close:hover {
+        opacity: 0.7; /* Giver en let effekt ved hover */
     }
 
     /* Etage 0 */
-    #bar-Etage0 { top: 76%; left: 45%; }
-    #deli-Etage0 { top: 66%; left: 51%; }
-    #merchandise-Etage0 { top: 81%; left: 55%; }
-    #eventhall-Etage0 { top: 47%; left: 51%; }
-    #menWC1-Etage0 { top: 56%; left: 30%; }
-    #menWC2-Etage0 { top: 56%; left: 73%; }
-    #womenWC1-Etage0 { top: 62%; left: 34%; }
-    #womenWC2-Etage0 { top: 62%; left: 69%; }
+    #bar03-Etage0 { top: 78%; left: 46%; }
+    #deli02-Etage0 { top: 67%; left: 50%; }
+    #merchandise-Etage0 { top: 83%; left: 55%; }
+    #eventhall-Etage0 { top: 47%; left: 50%; }
+    #menWC1-Etage0 { top: 57%; left: 28%; }
+    #menWC2-Etage0 { top: 57%; left: 74%; }
+    #womenWC1-Etage0 { top: 63%; left: 33%; }
+    #womenWC2-Etage0 { top: 63%; left: 70%; }
     #vip1-Etage0 { top: 81%; left: 17%; }
     #vip2-Etage0 { top: 69%; left: 85%; }
 
     /* Etage 1 */
-    #bar1-Etage1 { top: 67%; left: 56%; }
-    #bar2-Etage1 { top: 33%; left: 73%; }
-    #bar3-Etage1 { top: 33%; left: 29%; }
-    #deli1-Etage1 { top: 67%; left: 44%; }
-    #deli2-Etage1 { top: 47%; left: 73%; }
-    #deli3-Etage1 { top: 47%; left: 29%; }
-    #merchandise-Etage1 { top: 62%; left: 33%; }
+    #bar13-Etage1 { top: 67%; left: 57%; }
+    #bar11-Etage1 { top: 33%; left: 75%; }
+    #bar16-Etage1 { top: 33%; left: 27%; }
+    #deli14-Etage1 { top: 67%; left: 43%; }
+    #deli12-Etage1 { top: 47%; left: 75%; }
+    #deli15-Etage1 { top: 47%; left: 27%; }
+    #merchandise-Etage1 { top: 62%; left: 31%; }
     #eventhall-Etage1 { top: 47%; left: 50%; }
-    #menWC1-Etage1 { top: 27%; left: 73%; }
-    #menWC2-Etage1 { top: 55%; left: 73%; }
-    #menWC3-Etage1 { top: 40%; left: 29%; }
-    #womenWC1-Etage1 { top: 40%; left: 73%; }
-    #womenWC2-Etage1 { top: 27%; left: 29%; }
-    #womenWC3-Etage1 { top: 55%; left: 29%; }
-    #garderobe-Etage1 { top: 62%; left: 69%; }
+    #menWC1-Etage1 { top: 26%; left: 75%; }
+    #menWC2-Etage1 { top: 55%; left: 75%; }
+    #menWC3-Etage1 { top: 40%; left: 27%; }
+    #womenWC1-Etage1 { top: 40%; left: 75%; }
+    #womenWC2-Etage1 { top: 26%; left: 27%; }
+    #womenWC3-Etage1 { top: 55%; left: 27%; }
+    #garderobe-Etage1 { top: 62%; left: 70%; }
 
     /* Etage 3 */
-    #bar1-Etage3 { top: 47%; left: 28%; }
-    #bar2-Etage3 { top: 68%; left: 50%; }
-    #bar3-Etage3 { top: 47%; left: 74%; }
+    #bar35-Etage3 { top: 47%; left: 27%; }
+    #bar33-Etage3 { top: 68%; left: 50%; }
+    #bar31-Etage3 { top: 47%; left: 75%; }
     #eventhall-Etage3 { top: 47%; left: 50%; }
-    #menWC1-Etage3 { top: 34%; left: 74%; }
-    #menWC2-Etage3 { top: 54%; left: 74%; }
-    #menWC3-Etage3 { top: 40%; left: 28%; }
+    #menWC1-Etage3 { top: 33%; left: 75%; }
+    #menWC2-Etage3 { top: 55%; left: 75%; }
+    #menWC3-Etage3 { top: 40%; left: 27%; }
     #menWC4-Etage3 { top: 66%; left: 40%; }
-    #womenWC1-Etage3 { top: 40%; left: 74%; }
-    #womenWC2-Etage3 { top: 34%; left: 28%; }
-    #womenWC3-Etage3 { top: 54%; left: 28%; }
-    #womenWC4-Etage3 { top: 66%; left: 60%; }
+    #womenWC1-Etage3 { top: 40%; left: 75%; }
+    #womenWC2-Etage3 { top: 33%; left: 27%; }
+    #womenWC3-Etage3 { top: 55%; left: 27%; }
+    #womenWC4-Etage3 { top: 67%; left: 60%; }
 }
 
 @media (max-width: 960px) {
+    .map-container {
+        width: 80%; /* Kortet fylder mere på små skærme */
+        padding: 30px; /* Juster padding */
+    }
+    
     .point {
-        width: 1rem; /* For punkter på skærme under 960px */
-        height: 1rem;
+        width: 1.25rem; /* For punkter på skærme under 960px */
+        height: 1.25rem;
+    }
+
+    .popup {
+        height: 19%;
+        width: 21%;
+        font-size: 0.6rem;
+    }
+
+    .popup-link {
+        font-size: 0.6rem; /* Endnu mindre font på små skærme */
+        padding: 0.3rem 0.6rem;
+    }
+
+    .close {
+        cursor: pointer;
+        display: inline-block;
+        width: 15px; /* Juster størrelse af luk-knappen */
+        height: 15px;
+        background-image: url('path/to/Close.png'); /* Sørg for at angive korrekt sti til billedet */
+        background-size: cover; /* Sørger for, at billedet fylder knappen */
+        background-repeat: no-repeat;
+        margin-top: 10px;
+        position: absolute;
+        top: 3px;
+        right: 3px;
+    }
+    
+    .close:hover {
+        opacity: 0.7; /* Giver en let effekt ved hover */
     }
 
     /* Etage 0 */
-    #bar-Etage0 { top: 75%; left: 45%; }
-    #deli-Etage0 { top: 66%; left: 51%; }
-    #merchandise-Etage0 { top: 80%; left: 54%; }
+    #bar03-Etage0 { top: 78%; left: 46%; }
+    #deli02-Etage0 { top: 67%; left: 51%; }
+    #merchandise-Etage0 { top: 83%; left: 55%; }
     #eventhall-Etage0 { top: 47%; left: 51%; }
-    #menWC1-Etage0 { top: 56%; left: 31%; }
-    #menWC2-Etage0 { top: 56%; left: 72%; }
-    #womenWC1-Etage0 { top: 62%; left: 34%; }
-    #womenWC2-Etage0 { top: 62%; left: 68%; }
+    #menWC1-Etage0 { top: 57%; left: 29%; }
+    #menWC2-Etage0 { top: 57%; left: 75%; }
+    #womenWC1-Etage0 { top: 63%; left: 33%; }
+    #womenWC2-Etage0 { top: 63%; left: 70%; }
     #vip1-Etage0 { top: 80%; left: 20%; }
     #vip2-Etage0 { top: 69%; left: 83%; }
     
     /* Etage 1 */
-    #bar1-Etage1 { top: 66%; left: 56%; }
-    #bar2-Etage1 { top: 34%; left: 73%; }
-    #bar3-Etage1 { top: 34%; left: 29%; }
-    #deli1-Etage1 { top: 66%; left: 44%; }
-    #deli2-Etage1 { top: 47%; left: 73%; }
-    #deli3-Etage1 { top: 47%; left: 29%; }
-    #merchandise-Etage1 { top: 62%; left: 33%; }
+    #bar13-Etage1 { top: 67%; left: 57%; }
+    #bar11-Etage1 { top: 33%; left: 75%; }
+    #bar16-Etage1 { top: 33%; left: 27%; }
+    #deli14-Etage1 { top: 67%; left: 43%; }
+    #deli12-Etage1 { top: 47%; left: 75%; }
+    #deli15-Etage1 { top: 47%; left: 27%; }
+    #merchandise-Etage1 { top: 63%; left: 31%; }
     #eventhall-Etage1 { top: 47%; left: 50%; }
-    #menWC1-Etage1 { top: 28%; left: 73%; }
-    #menWC2-Etage1 { top: 54%; left: 73%; }
-    #menWC3-Etage1 { top: 40%; left: 29%; }
-    #womenWC1-Etage1 { top: 40%; left: 73%; }
-    #womenWC2-Etage1 { top: 28%; left: 29%; }
-    #womenWC3-Etage1 { top: 54%; left: 29%; }
-    #garderobe-Etage1 { top: 62%; left: 68%; }
+    #menWC1-Etage1 { top: 26%; left: 75%; }
+    #menWC2-Etage1 { top: 55%; left: 75%; }
+    #menWC3-Etage1 { top: 40%; left: 27%; }
+    #womenWC1-Etage1 { top: 40%; left: 75%; }
+    #womenWC2-Etage1 { top: 26%; left: 27%; }
+    #womenWC3-Etage1 { top: 55%; left: 27%; }
+    #garderobe-Etage1 { top: 63%; left: 70%; }
 
     /* Etage 3 */
-    #bar1-Etage3 { top: 47%; left: 29%; }
-    #bar2-Etage3 { top: 67%; left: 50%; }
-    #bar3-Etage3 { top: 47%; left: 73%; }
+    #bar35-Etage3 { top: 47%; left: 27%; }
+    #bar33-Etage3 { top: 69%; left: 50%; }
+    #bar31-Etage3 { top: 47%; left: 75%; }
     #eventhall-Etage3 { top: 47%; left: 50%; }
-    #menWC1-Etage3 { top: 34%; left: 73%; }
-    #menWC2-Etage3 { top: 54%; left: 73%; }
-    #menWC3-Etage3 { top: 40%; left: 29%; }
-    #menWC4-Etage3 { top: 65%; left: 41%; }
-    #womenWC1-Etage3 { top: 40%; left: 73%; }
-    #womenWC2-Etage3 { top: 34%; left: 29%; }
-    #womenWC3-Etage3 { top: 54%; left: 29%; }
-    #womenWC4-Etage3 { top: 65%; left: 60%; }
+    #menWC1-Etage3 { top: 33%; left: 75%; }
+    #menWC2-Etage3 { top: 54%; left: 75%; }
+    #menWC3-Etage3 { top: 40%; left: 27%; }
+    #menWC4-Etage3 { top: 67%; left: 40%; }
+    #womenWC1-Etage3 { top: 40%; left: 75%; }
+    #womenWC2-Etage3 { top: 33%; left: 27%; }
+    #womenWC3-Etage3 { top: 54%; left: 27%; }
+    #womenWC4-Etage3 { top: 67%; left: 61%; }
 }
 
 @media (max-width: 768px) {
+    .map-container {
+        width: 85%; /* Kortet fylder næsten hele skærmen */
+        padding: 20px; /* Mindre padding */
+    }
+    
     .point {
-        width: 0.75rem; /* For punkter på skærme under 768px */
-        height: 0.75rem;
+        width: 1rem; /* For punkter på skærme under 768px */
+        height: 1rem;
+    }
+
+    .popup {
+        height: 18%;
+        width: 19%;
+        font-size: 0.5rem;
+    }
+
+    .popup-link {
+        font-size: 0.5rem; /* Mindre font på små skærme */
+        padding: 0.25rem 0.5rem;
+    }
+
+    .close {
+        cursor: pointer;
+        display: inline-block;
+        width: 12.5px; /* Juster størrelse af luk-knappen */
+        height: 12.5px;
+        background-image: url('path/to/Close.png'); /* Sørg for at angive korrekt sti til billedet */
+        background-size: cover; /* Sørger for, at billedet fylder knappen */
+        background-repeat: no-repeat;
+        margin-top: 10px;
+        position: absolute;
+        top: 2px;
+        right: 2px;
+    }
+    
+    .close:hover {
+        opacity: 0.7; /* Giver en let effekt ved hover */
     }
 
     /* Etage 0 */
-    #bar-Etage0 { top: 74%; left: 47%; }
-    #deli-Etage0 { top: 65%; left: 51%; }
-    #merchandise-Etage0 { top: 78%; left: 54%; }
+    #bar03-Etage0 { top: 79%; left: 47%; }
+    #deli02-Etage0 { top: 68%; left: 51%; }
+    #merchandise-Etage0 { top: 84%; left: 55%; }
     #eventhall-Etage0 { top: 47%; left: 51%; }
-    #menWC1-Etage0 { top: 56%; left: 32%; }
-    #menWC2-Etage0 { top: 56%; left: 71%; }
-    #womenWC1-Etage0 { top: 61%; left: 36%; }
-    #womenWC2-Etage0 { top: 61%; left: 67%; }
+    #menWC1-Etage0 { top: 57%; left: 27%; }
+    #menWC2-Etage0 { top: 57%; left: 75%; }
+    #womenWC1-Etage0 { top: 63%; left: 33%; }
+    #womenWC2-Etage0 { top: 63%; left: 71%; }
     #vip1-Etage0 { top: 79%; left: 20%; }
     #vip2-Etage0 { top: 68%; left: 81%; }
 
     /* Etage 1 */
-    #bar1-Etage1 { top: 65%; left: 56%; }
-    #bar2-Etage1 { top: 35%; left: 72%; }
-    #bar3-Etage1 { top: 35%; left: 30%; }
-    #deli1-Etage1 { top: 65%; left: 44%; }
-    #deli2-Etage1 { top: 47%; left: 72%; }
-    #deli3-Etage1 { top: 47%; left: 30%; }
-    #merchandise-Etage1 { top: 61%; left: 34%; }
+    #bar13-Etage1 { top: 68%; left: 57%; }
+    #bar11-Etage1 { top: 32%; left: 75%; }
+    #bar16-Etage1 { top: 32%; left: 27%; }
+    #deli14-Etage1 { top: 68%; left: 43%; }
+    #deli12-Etage1 { top: 47%; left: 75%; }
+    #deli15-Etage1 { top: 47%; left: 27%; }
+    #merchandise-Etage1 { top: 63%; left: 31%; }
     #eventhall-Etage1 { top: 47%; left: 50%; }
-    #menWC1-Etage1 { top: 29%; left: 72%; }
-    #menWC2-Etage1 { top: 54%; left: 72%; }
-    #menWC3-Etage1 { top: 41%; left: 30%; }
-    #womenWC1-Etage1 { top: 41%; left: 72%; }
-    #womenWC2-Etage1 { top: 29%; left: 30%; }
-    #womenWC3-Etage1 { top: 54%; left: 30%; }
-    #garderobe-Etage1 { top: 61%; left: 67%; }
+    #menWC1-Etage1 { top: 25%; left: 75%; }
+    #menWC2-Etage1 { top: 55%; left: 75%; }
+    #menWC3-Etage1 { top: 40%; left: 27%; }
+    #womenWC1-Etage1 { top: 40%; left: 75%; }
+    #womenWC2-Etage1 { top: 25%; left: 27%; }
+    #womenWC3-Etage1 { top: 55%; left: 27%; }
+    #garderobe-Etage1 { top: 63%; left: 70%; }
 
     /* Etage 3 */
-    #bar1-Etage3 { top: 47%; left: 31%; }
-    #bar2-Etage3 { top: 66%; left: 50%; }
-    #bar3-Etage3 { top: 47%; left: 71%; }
+    #bar35-Etage3 { top: 47%; left: 26%; }
+    #bar33-Etage3 { top: 69%; left: 50%; }
+    #bar31-Etage3 { top: 47%; left: 76%; }
     #eventhall-Etage3 { top: 47%; left: 50%; }
-    #menWC1-Etage3 { top: 35%; left: 71%; }
-    #menWC2-Etage3 { top: 54%; left: 71%; }
-    #menWC3-Etage3 { top: 41%; left: 31%; }
-    #menWC4-Etage3 { top: 64%; left: 42%; }
-    #womenWC1-Etage3 { top: 41%; left: 71%; }
-    #womenWC2-Etage3 { top: 35%; left: 31%; }
-    #womenWC3-Etage3 { top: 54%; left: 31%; }
-    #womenWC4-Etage3 { top: 64%; left: 59%; }
+    #menWC1-Etage3 { top: 32%; left: 76%; }
+    #menWC2-Etage3 { top: 54%; left: 76%; }
+    #menWC3-Etage3 { top: 39%; left: 26%; }
+    #menWC4-Etage3 { top: 67%; left: 39%; }
+    #womenWC1-Etage3 { top: 39%; left: 76%; }
+    #womenWC2-Etage3 { top: 32%; left: 26%; }
+    #womenWC3-Etage3 { top: 54%; left: 26%; }
+    #womenWC4-Etage3 { top: 67%; left: 61%; }
 }
 
 @media (max-width: 576px) {
+    .map-container {
+        width: 90%; /* Kortet fylder hele skærmen */
+        padding: 10px; /* Mindre padding */
+    }
+    
     .point {
-        width: 0.5rem; /* For punkter på skærme under 576px */
-        height: 0.5rem;
+        width: 0.75rem; /* Mindre punkter på skærme under 576px */
+        height: 0.75rem;
+    }
+
+    .popup {
+        height: 17%;
+        width: 18%;
+        font-size: 0.4rem;
+    }
+
+    .popup-link {
+        font-size: 0.4rem; /* Mindre font på meget små skærme */
+        padding: 0.2rem 0.4rem;
+    }
+
+    .close {
+        cursor: pointer;
+        display: inline-block;
+        width: 10px; /* Juster størrelse af luk-knappen */
+        height: 10px;
+        background-image: url('../images/Close.png'); /* Sørg for at angive korrekt sti til billedet */
+        background-size: cover; /* Sørger for, at billedet fylder knappen */
+        background-repeat: no-repeat;
+        margin-top: 10px;
+        position: absolute;
+        top: 1px;
+        right: 1px;
+    }
+    
+    .close:hover {
+        opacity: 0.7; /* Giver en let effekt ved hover */
     }
 
     /* Etage 0 */
-    #bar-Etage0 { top: 71%; left: 47%; }
-    #deli-Etage0 { top: 63%; left: 51%; }
-    #merchandise-Etage0 { top: 75%; left: 54%; }
+    #bar03-Etage0 { top: 80%; left: 47%; }
+    #deli02-Etage0 { top: 68%; left: 51%; }
+    #merchandise-Etage0 { top: 85%; left: 56%; }
     #eventhall-Etage0 { top: 47%; left: 51%; }
-    #menWC1-Etage0 { top: 55%; left: 34%; }
-    #menWC2-Etage0 { top: 55%; left: 68%; }
-    #womenWC1-Etage0 { top: 60%; left: 38%; }
-    #womenWC2-Etage0 { top: 60%; left: 65%; }
+    #menWC1-Etage0 { top: 57%; left: 27%; }
+    #menWC2-Etage0 { top: 57%; left: 76%; }
+    #womenWC1-Etage0 { top: 63%; left: 33%; }
+    #womenWC2-Etage0 { top: 63%; left: 71%; }
     #vip1-Etage0 { top: 76%; left: 25%; }
     #vip2-Etage0 { top: 66%; left: 77%; }
 
     /* Etage 1 */
-    #bar1-Etage1 { top: 63%; left: 56%; }
-    #bar2-Etage1 { top: 37%; left: 68%; }
-    #bar3-Etage1 { top: 37%; left: 34%; }
-    #deli1-Etage1 { top: 63%; left: 44%; }
-    #deli2-Etage1 { top: 48%; left: 68%; }
-    #deli3-Etage1 { top: 48%; left: 34%; }
-    #merchandise-Etage1 { top: 59%; left: 37%; }
+    #bar13-Etage1 { top: 68%; left: 58%; }
+    #bar11-Etage1 { top: 32%; left: 76%; }
+    #bar16-Etage1 { top: 32%; left: 26%; }
+    #deli14-Etage1 { top: 68%; left: 42%; }
+    #deli12-Etage1 { top: 47%; left: 76%; }
+    #deli15-Etage1 { top: 47%; left: 26%; }
+    #merchandise-Etage1 { top: 63%; left: 30%; }
     #eventhall-Etage1 { top: 47%; left: 50%; }
-    #menWC1-Etage1 { top: 32%; left: 68%; }
-    #menWC2-Etage1 { top: 54%; left: 68%; }
-    #menWC3-Etage1 { top: 42%; left: 34%; }
-    #womenWC1-Etage1 { top: 42%; left: 68%; }
-    #womenWC2-Etage1 { top: 32%; left: 34%; }
-    #womenWC3-Etage1 { top: 54%; left: 34%; }
-    #garderobe-Etage1 { top: 59%; left: 64%; }
+    #menWC1-Etage1 { top: 25%; left: 76%; }
+    #menWC2-Etage1 { top: 55%; left: 76%; }
+    #menWC3-Etage1 { top: 39%; left: 26%; }
+    #womenWC1-Etage1 { top: 39%; left: 76%; }
+    #womenWC2-Etage1 { top: 25%; left: 26%; }
+    #womenWC3-Etage1 { top: 55%; left: 26%; }
+    #garderobe-Etage1 { top: 63%; left: 70%; }
 
     /* Etage 3 */
-    #bar1-Etage3 { top: 47%; left: 34%; }
-    #bar2-Etage3 { top: 64%; left: 50%; }
-    #bar3-Etage3 { top: 47%; left: 67%; }
+    #bar35-Etage3 { top: 47%; left: 26%; }
+    #bar33-Etage3 { top: 69%; left: 50%; }
+    #bar31-Etage3 { top: 47%; left: 76%; }
     #eventhall-Etage3 { top: 47%; left: 50%; }
-    #menWC1-Etage3 { top: 37%; left: 67%; }
-    #menWC2-Etage3 { top: 53%; left: 67%; }
-    #menWC3-Etage3 { top: 42%; left: 34%; }
-    #menWC4-Etage3 { top: 62%; left: 43%; }
-    #womenWC1-Etage3 { top: 42%; left: 67%; }
-    #womenWC2-Etage3 { top: 37%; left: 34%; }
-    #womenWC3-Etage3 { top: 53%; left: 34%; }
-    #womenWC4-Etage3 { top: 62%; left: 58%; }
+    #menWC1-Etage3 { top: 32%; left: 76%; }
+    #menWC2-Etage3 { top: 55%; left: 76%; }
+    #menWC3-Etage3 { top: 39%; left: 26%; }
+    #menWC4-Etage3 { top: 68%; left: 39%; }
+    #womenWC1-Etage3 { top: 39%; left: 76%; }
+    #womenWC2-Etage3 { top: 32%; left: 26%; }
+    #womenWC3-Etage3 { top: 55%; left: 26%; }
+    #womenWC4-Etage3 { top: 68%; left: 62%; }
 }

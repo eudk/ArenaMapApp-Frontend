@@ -27,7 +27,7 @@
                     <ul class="dropdown-menu" id="menukort-menu">
                         <li><a href="bar.html">Bar</a></li>
                         <li><a href="deli.html">Deli</a></li>
-                        <li><a href="vip.html">VIP</a></li>
+                        <li><a href="vip.html">Arenaen</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -42,23 +42,30 @@
         <a class="login" href="#"><button>Medarbejder?</button></a>
     </header><br><br><br>
 
+    <!-- Søgefunktion til bod -->
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Fx Deli 0.2?, Toilet?, ..." />
+        <button id="search-btn" class="styled-button">Søg</button>
+        <button id="clear-btn" class="styled-button">Ryd op</button>
+        <button id="orders-btn" class="styled-button" onclick="location.href='mine-ordrer.html'">Mine ordrer</button>
+    </div>
+
     <div class="map-container">
         <img src="../images/Floor0.png" alt="Kort over Etage 0">
         <!-- Klikbare punkter -->
-        <div class="point" id="bar-Etage0" data-info="Bar - Her kan du få drinks og snacks." data-img="../images/Bar.png"></div>
-        <div class="point" id="deli-Etage0" data-info="Deli - Få sandwiches og salater her." data-img="../images/Deli.png"></div>
-        <div class="point" id="merchandise-Etage0" data-info="Merchandise - Her sælger vi t-shirts, plakater og andet." data-img="../images/Merchandise.png"></div>
-        <div class="point" id="eventhall-Etage0" data-info="Eventhall - Indgang til hovedarrangementet." data-img="../images/Eventhall.png"></div>
-        <div class="point" id="menWC1-Etage0" data-info="Herretoilet" data-img="../images/MenWC.png"></div>
-        <div class="point" id="menWC2-Etage0" data-info="Herretoilet" data-img="../images/MenWC.png"></div>
-        <div class="point" id="womenWC1-Etage0" data-info="Dametoilet" data-img="../images/WomenWC.png"></div>
-        <div class="point" id="womenWC2-Etage0" data-info="Dametoilet" data-img="../images/WomenWC.png"></div>
-        <div class="point" id="vip1-Etage0" data-info="VIP-baren" data-img="../images/VIP.png"></div>
-        <div class="point" id="vip2-Etage0" data-info="VIP-baren" data-img="../images/VIP.png"></div>
+        <div class="point" id="bar03-Etage0" data-info="Bar 0.3 - Her kan du købe og bestil drinks." data-link="bar.html" data-img="../images/Bar.png"></div>
+        <div class="point" id="deli02-Etage0" data-info="Deli 0.2 - Køb og bestil din mad her." data-link="deli.html" data-img="../images/Deli.png"></div>
+        <div class="point" id="eventhall-Etage0" data-info="Salen - Detajler omkring koncert salen." data-link="eventhall.html" data-img="../images/Eventhall.png"></div>
+        <div class="point" id="merchandise-Etage0" data-info="Merchandise - Du har mulighed for at købe t-shirts og andet her." data-img="../images/Merchandise.png"></div>
+        <div class="point" id="menWC1-Etage0" data-info="Herretoilet - Både rent og pænt klart til brug hos mænd." data-img="../images/MenWC.png"></div>
+        <div class="point" id="menWC2-Etage0" data-info="Herretoilet - Både rent og pænt klart til brug hos mænd." data-img="../images/MenWC.png"></div>
+        <div class="point" id="womenWC1-Etage0" data-info="Dametoilet - Både rent og pænt klart til brug hos kvinder." data-img="../images/WomenWC.png"></div>
+        <div class="point" id="womenWC2-Etage0" data-info="Dametoilet - Både rent og pænt klart til brug hos kvinder." data-img="../images/WomenWC.png"></div>
     </div>
 
     <div class="popup" id="popup">
         <p id="popup-text"></p>
+        <a href="#" class="popup-link">Læe mere</a><br>
         <span class="close" id="popup-close">Luk</span>
     </div><br><br><br>
 

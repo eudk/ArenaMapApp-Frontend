@@ -27,7 +27,7 @@
                     <ul class="dropdown-menu" id="menukort-menu">
                         <li><a href="bar.html">Bar</a></li>
                         <li><a href="deli.html">Deli</a></li>
-                        <li><a href="vip.html">VIP</a></li>
+                        <li><a href="vip.html">Arenaen</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -39,24 +39,32 @@
                 </li>
             </ul>
         </nav>
-        <a class="login" href="#"><button>Login</button></a>
+        <a class="login" href="#"><button>Medarbejder?</button></a>
     </header><br><br><br>
+
+    <!-- Søgefunktion til bod -->
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Fx Bar 3.3?, Toilet?, ..." />
+        <button id="search-btn" class="styled-button">Søg</button>
+        <button id="clear-btn" class="styled-button">Ryd op</button>
+        <button id="orders-btn" class="styled-button" onclick="location.href='mine-ordrer.html'">Mine ordrer</button>
+    </div>
 
     <div class="map-container">
         <img src="../images/Floor3.png" alt="Kort over Etage 3">
         <!-- Klikbare punkter -->
-        <div class="point" id="bar1-Etage3" data-info="Bar - Her kan du få drinks og snacks." data-img="../images/Bar.png"></div>
-        <div class="point" id="bar2-Etage3" data-info="Bar - Her kan du få drinks og snacks." data-img="../images/Bar.png"></div>
-        <div class="point" id="bar3-Etage3" data-info="Bar - Her kan du få drinks og snacks." data-img="../images/Bar.png"></div>
-        <div class="point" id="eventhall-Etage3" data-info="Eventhall - Indgang til hovedarrangementet." data-img="../images/Eventhall.png"></div>
-        <div class="point" id="menWC1-Etage3" data-info="Herretoilet" data-img="../images/MenWC.png"></div>
-        <div class="point" id="menWC2-Etage3" data-info="Herretoilet" data-img="../images/MenWC.png"></div>
-        <div class="point" id="menWC3-Etage3" data-info="Herretoilet" data-img="../images/MenWC.png"></div>
-        <div class="point" id="menWC4-Etage3" data-info="Herretoilet" data-img="../images/MenWC.png"></div>
-        <div class="point" id="womenWC1-Etage3" data-info="Dametoilet" data-img="../images/WomenWC.png"></div>
-        <div class="point" id="womenWC2-Etage3" data-info="Dametoilet" data-img="../images/WomenWC.png"></div>
-        <div class="point" id="womenWC3-Etage3" data-info="Dametoilet" data-img="../images/WomenWC.png"></div>
-        <div class="point" id="womenWC4-Etage3" data-info="Dametoilet" data-img="../images/WomenWC.png"></div>
+        <div class="point" id="bar35-Etage3" data-info="Bar 3.5 - Her kan du købe og bestil drinks." data-link="bar.html" data-img="../images/Bar.png"></div>
+        <div class="point" id="bar33-Etage3" data-info="Bar 3.3 - Her kan du købe og bestil drinks." data-link="bar.html" data-img="../images/Bar.png"></div>
+        <div class="point" id="bar31-Etage3" data-info="Bar 3.1 - Her kan du købe og bestil drinks." data-link="bar.html" data-img="../images/Bar.png"></div>
+        <div class="point" id="eventhall-Etage3" data-info="Salen - Detajler omkring koncert salen." data-link="eventhall.html" data-img="../images/Eventhall.png"></div>
+        <div class="point" id="menWC1-Etage3" data-info="Herretoilet - Både rent og pænt klart til brug hos mænd." data-img="../images/MenWC.png"></div>
+        <div class="point" id="menWC2-Etage3" data-info="Herretoilet - Både rent og pænt klart til brug hos mænd." data-img="../images/MenWC.png"></div>
+        <div class="point" id="menWC3-Etage3" data-info="Herretoilet - Både rent og pænt klart til brug hos mænd." data-img="../images/MenWC.png"></div>
+        <div class="point" id="menWC4-Etage3" data-info="Herretoilet - Både rent og pænt klart til brug hos mænd." data-img="../images/MenWC.png"></div>
+        <div class="point" id="womenWC1-Etage3" data-info="Dametoilet - Både rent og pænt klart til brug hos kvinder." data-img="../images/WomenWC.png"></div>
+        <div class="point" id="womenWC2-Etage3" data-info="Dametoilet - Både rent og pænt klart til brug hos kvinder." data-img="../images/WomenWC.png"></div>
+        <div class="point" id="womenWC3-Etage3" data-info="Dametoilet - Både rent og pænt klart til brug hos kvinder." data-img="../images/WomenWC.png"></div>
+        <div class="point" id="womenWC4-Etage3" data-info="Dametoilet - Både rent og pænt klart til brug hos kvinder." data-img="../images/WomenWC.png"></div>
     </div>
 
     <div class="popup" id="popup">
