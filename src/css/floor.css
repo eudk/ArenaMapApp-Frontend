@@ -8,6 +8,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative; /* For at kunne placere Menu-billedet over navbaren */
 }
 
 /* Styling til logoet */
@@ -16,6 +17,110 @@ header .logo {
     height: auto;
     margin-left: 20%;
     margin-right: 40px; /* Reducer afstanden mellem logo og navbar */
+}
+
+/* Skjult billede af menuen, vises kun under 768px */
+header .menu-icon {
+    display: none; /* Skjult som standard */
+    max-width: 50px; /* Juster størrelsen af menuikonet */
+    cursor: pointer; /* Gør det klikbart */
+    position: absolute;
+    right: 10px;
+}
+
+/* Styling til luk-knap */
+#close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px; /* Juster efter behov */
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#close-btn:hover {
+    transform: scale(1.2); /* Gør knappen lidt større ved hover */
+}
+
+/* Styling til slidemenupanelet */
+#slide-menu {
+    position: fixed;
+    top: 0;
+    right: -250px; /* Skjul menuen til højre */
+    width: 250px;
+    height: 100%;
+    background-color: #361b4f;
+    color: white;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+#slide-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 20px;
+}
+
+#slide-menu ul li {
+    margin: 20px 0;
+}
+
+#slide-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px; /* Tilføj lidt polstring for klikbart område */
+    display: block; /* Gør hele området klikbart */
+    border-radius: 5px; /* Tilføj afrundede kanter */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Gør hover-effekten glidende */
+}
+
+/* Hover-effekt */
+#slide-menu ul li a:hover {
+    background-color: #4a246a; /* Mørkere lilla nuance */
+    color: #ffd700; /* Guldtekstfarve */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Tilføj en let skygge ved hover */
+}
+
+/* Når menuen er åben */
+#slide-menu.open {
+    right: 0;
+}
+
+/* Active state styling for the active button */
+.slide-dropdown-toggle.active {
+    background-color: #4a246a;  /* Same background color as the dropdown */
+    color: #ffd700;  /* Optional: Text color */
+    font-weight: bold;  /* Make the text bold to highlight the active button */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);  /* Add a light shadow for the active button */
+}
+
+/* Styling for dropdowns when active */
+.slide-dropdown-menu {
+    display: none;  /* Hide the dropdowns by default */
+    background-color: #4a246a;  /* Same background color for the dropdown */
+    padding: 10px 0;
+    list-style: none;
+    border-radius: 5px;
+}
+
+.slide-dropdown-menu li a {
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    display: block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.slide-dropdown-menu li a:hover {
+    background-color: #361b4f;
+    color: #ffd700;
+}
+
+.slide-dropdown.open .slide-dropdown-menu {
+    display: block;
 }
 
 /* Styling til navbar */
@@ -56,38 +161,6 @@ header .logo {
     background-color: #0056b3;
     color: #000000;
 }
-
-/* Placering af login-knap */
-header .login {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-right: 20%; /* Sørger for, at login-knappen placeres til højre */
-}
-
-/* Styling til knappen */
-header .login button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-header .login button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
-
-header .login button:active {
-    background-color: #003f7f;
-    transform: scale(0.95);
-}
-
 
 /* Dropdown-menu styling */
 .dropdown-menu {
@@ -363,29 +436,65 @@ footer {
     background-color: #270645; /* Match headerens farve */
     color: white;
     padding: 20px 10%;
-    text-align: center;
     font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+    font-size: 14px; /* Standard tekststørrelse */
     margin-top: 30px; /* Plads over footeren */
     border-top: 3px solid #007BFF; /* En linje for visuelt fokus */
 }
 
 footer .footer-container {
+    display: flex; /* Placer sektionerne side om side */
+    justify-content: center; /* Centrerer sektionerne vandret */
+    align-items: flex-start; /* Juster topkanten af sektionerne */
     max-width: 1200px; /* Begrænset bredde for bedre layout */
     margin: 0 auto; /* Centrer indholdet */
-    line-height: 1.6; /* Gør teksten letlæselig */
+    gap: 130px; /* Gør plads mellem sektionerne */
 }
 
-footer p {
+footer .footer-info {
+    display: flex;
+    flex-direction: column; /* Teksten står i kolonner */
+    text-align: left; /* Venstrestil teksten */
+    gap: 10px; /* Mellemrum mellem tekstlinjerne */
+}
+
+footer .footer-info strong {
+    color: #007BFF; /* Gør overskrifter mere iøjnefaldende */
+}
+
+footer .footer-info p {
     margin: 5px 0; /* Juster afstand mellem linjerne */
 }
 
-footer strong {
-    color: #007BFF; /* Gør overskriften mere iøjnefaldende */
+footer .footer-copy {
+    color: white; /* Hvid tekst */
+    text-align: center; /* Centreret tekst */
+    font-size: 7px; /* Mindre tekststørrelse */
+    padding: 10px 0; /* Lodret padding */
+    margin-top: 10px; /* Plads mellem info-sektionerne og copy-sektionen */
+}
+
+footer a {
+    color: #007BFF; /* Blå farve til links */
+    text-decoration: none; /* Fjern understregning */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Understregning ved hover */
 }
 
 /* Responsivitet med Bootstrap */ 
 @media (max-width: 1152px) {
+    
+    .navbar ul {
+        gap: 15px;
+    }
+
+    header .logo {
+        max-width: 90px;
+        margin-left: 100px;
+    }
+    
     .map-container {
         width: 75%; /* Øger bredden lidt på mellemstore skærme */
         padding: 40px; /* Juster padding */
@@ -467,9 +576,30 @@ footer strong {
     #womenWC2-Etage3 { top: 33%; left: 27%; }
     #womenWC3-Etage3 { top: 55%; left: 27%; }
     #womenWC4-Etage3 { top: 67%; left: 60%; }
+
+    footer {
+        font-size: 13px; /* Justér fontstørrelse yderligere for meget små skærme */
+    }
+    footer .footer-container {
+        gap: 90px; /* Reducér mellemrummet yderligere */
+        padding: 0px; /* Mindre padding for mobil */
+    }
+    footer .footer-info {
+        gap: 2px; /* Tættere mellemrum mellem infoelementer */
+    }
 }
 
 @media (max-width: 960px) {
+    
+    header .logo {
+        max-width: 90px;
+        margin-left: 50px;
+    }
+    .navbar ul li a {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+    
     .map-container {
         width: 80%; /* Kortet fylder mere på små skærme */
         padding: 30px; /* Juster padding */
@@ -551,9 +681,35 @@ footer strong {
     #womenWC2-Etage3 { top: 33%; left: 27%; }
     #womenWC3-Etage3 { top: 54%; left: 27%; }
     #womenWC4-Etage3 { top: 67%; left: 61%; }
+
+    footer {
+        font-size: 12px; /* Justér fontstørrelse yderligere for meget små skærme */
+    }
+    footer .footer-container {
+        gap: 80px; /* Reducér mellemrummet yderligere */
+        padding: 0px; /* Mindre padding for mobil */
+    }
+    footer .footer-info {
+        gap: 2px; /* Tættere mellemrum mellem infoelementer */
+    }
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        display: none;
+    }
+
+    header .menu-icon {
+        display: block; /* Vis menu-ikonet */
+        margin: 40px;
+        width: 30px;
+    }
+
+    /* Sørg for at slide-menuen kan vises korrekt på små skærme */
+    #slide-menu {
+        right: -250px; /* Skjult som standard */
+    }
+    
     .map-container {
         width: 85%; /* Kortet fylder næsten hele skærmen */
         padding: 20px; /* Mindre padding */
@@ -635,9 +791,44 @@ footer strong {
     #womenWC2-Etage3 { top: 32%; left: 26%; }
     #womenWC3-Etage3 { top: 54%; left: 26%; }
     #womenWC4-Etage3 { top: 67%; left: 61%; }
+
+    footer {
+        font-size: 11px; /* Justér fontstørrelse yderligere for meget små skærme */
+    }
+    footer .footer-container {
+        gap: 60px; /* Reducér mellemrummet yderligere */
+        padding: 0px; /* Mindre padding for mobil */
+    }
+    footer .footer-info {
+        gap: 2px; /* Tættere mellemrum mellem infoelementer */
+    }
 }
 
 @media (max-width: 576px) {
+    .navbar {
+        display: none;
+    }
+
+    header .menu-icon {
+        display: block; /* Vis menu-ikonet */
+        margin: 40px;
+        width: 30px;
+    }
+    
+    header .logo {
+        max-width: 90px;
+    }
+
+    .navbar ul li a {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    header .login button {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+    
     .map-container {
         width: 90%; /* Kortet fylder hele skærmen */
         padding: 10px; /* Mindre padding */
@@ -719,4 +910,15 @@ footer strong {
     #womenWC2-Etage3 { top: 32%; left: 26%; }
     #womenWC3-Etage3 { top: 55%; left: 26%; }
     #womenWC4-Etage3 { top: 68%; left: 62%; }
+
+    footer {
+        font-size: 10px; /* Justér fontstørrelse yderligere for meget små skærme */
+    }
+    footer .footer-container {
+        gap: 50px; /* Reducér mellemrummet yderligere */
+        padding: 0px; /* Mindre padding for mobil */
+    }
+    footer .footer-info {
+        gap: 2px; /* Tættere mellemrum mellem infoelementer */
+    }
 }
