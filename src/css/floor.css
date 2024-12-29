@@ -11,12 +11,12 @@ header {
     position: relative; /* For at kunne placere Menu-billedet over navbaren */
 }
 
-/* Styling til logoet */
-header .logo {
+/* Styling til logo-linket */
+header a .logo {
     max-width: 100px; 
     height: auto;
-    margin-left: 20%;
-    margin-right: 40px; /* Reducer afstanden mellem logo og navbar */
+    margin-left: 250px;
+    margin-right: 100px;
 }
 
 /* Skjult billede af menuen, vises kun under 768px */
@@ -189,33 +189,6 @@ header .menu-icon {
 .dropdown-menu li a:hover {
     background-color: #f4f4f4;
     color: #000000;
-}
-
-/* Dropdown-menu styling */
-.styled-dropdown {
-    display: block;
-    width: 100%;
-    max-width: 300px;
-    margin: 10px auto;
-    padding: 10px;
-    font-size: 14px;
-    color: #000000;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    appearance: none; /* Fjern standard-browser-stil */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url('../images/dropdown-icon.png'); /* Tilføj ikon */
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-}
-
-.styled-dropdown:focus {
-    outline: none;
-    border-color: #182A61;
-    box-shadow: 0 0 5px rgba(24, 42, 97, 0.5);
 }
 
 .search-container {
@@ -418,7 +391,7 @@ body {
     display: inline-block;
     width: 20px; /* Juster størrelse af luk-knappen */
     height: 20px;
-    background-image: url('path/to/Close.png'); /* Sørg for at angive korrekt sti til billedet */
+    background-image: url('../images/Close.png'); /* Sørg for at angive korrekt sti til billedet */
     background-size: cover; /* Sørger for, at billedet fylder knappen */
     background-repeat: no-repeat;
     margin-top: 10px;
@@ -486,13 +459,14 @@ footer a:hover {
 /* Responsivitet med Bootstrap */ 
 @media (max-width: 1152px) {
     
-    .navbar ul {
-        gap: 15px;
+    header a .logo {
+        max-width: 100px;
+        margin-left: 120px;
+        margin-right: 50px;
     }
 
-    header .logo {
-        max-width: 90px;
-        margin-left: 100px;
+    .navbar ul {
+        gap: 15px;
     }
     
     .map-container {
@@ -506,7 +480,7 @@ footer a:hover {
     }
 
     .popup {
-        height: 19%;
+        height: 21%;
         width: 19%;
         font-size: 0.7rem;
     }
@@ -521,7 +495,7 @@ footer a:hover {
         display: inline-block;
         width: 17.5px; /* Juster størrelse af luk-knappen */
         height: 17.5px;
-        background-image: url('path/to/Close.png'); /* Sørg for at angive korrekt sti til billedet */
+        background-image: url('../images/Close.png'); /* Sørg for at angive korrekt sti til billedet */
         background-size: cover; /* Sørger for, at billedet fylder knappen */
         background-repeat: no-repeat;
         margin-top: 10px;
@@ -591,10 +565,11 @@ footer a:hover {
 
 @media (max-width: 960px) {
     
-    header .logo {
+    header a .logo {
         max-width: 90px;
         margin-left: 50px;
     }
+
     .navbar ul li a {
         font-size: 14px;
         padding: 8px 10px;
@@ -626,7 +601,7 @@ footer a:hover {
         display: inline-block;
         width: 15px; /* Juster størrelse af luk-knappen */
         height: 15px;
-        background-image: url('path/to/Close.png'); /* Sørg for at angive korrekt sti til billedet */
+        background-image: url('../images/Close.png'); /* Sørg for at angive korrekt sti til billedet */
         background-size: cover; /* Sørger for, at billedet fylder knappen */
         background-repeat: no-repeat;
         margin-top: 10px;
@@ -695,6 +670,7 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
+    
     .navbar {
         display: none;
     }
@@ -736,7 +712,7 @@ footer a:hover {
         display: inline-block;
         width: 12.5px; /* Juster størrelse af luk-knappen */
         height: 12.5px;
-        background-image: url('path/to/Close.png'); /* Sørg for at angive korrekt sti til billedet */
+        background-image: url('../images/Close.png'); /* Sørg for at angive korrekt sti til billedet */
         background-size: cover; /* Sørger for, at billedet fylder knappen */
         background-repeat: no-repeat;
         margin-top: 10px;
@@ -805,6 +781,7 @@ footer a:hover {
 }
 
 @media (max-width: 576px) {
+    
     .navbar {
         display: none;
     }
