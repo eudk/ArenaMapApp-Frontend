@@ -191,17 +191,160 @@ header .menu-icon {
     color: #000000;
 }
 
-/* Styling til body for centrering */
+/* Styling for the whole page */
 body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #182A61; /* Baggrundsfarve */
-    justify-content: center; /* Centrer horisontalt */
-    align-items: center; /* Centrer vertikalt */
-    height: 100vh; /* Gør, at body fylder hele skærmhøjden */
-    text-align: center;
+    font-family: 'Arial', sans-serif;
+    background-color: #182A61;  /* Mørk blå baggrund */
+    color: #f4f4f4;  /* Lys tekstfarve for bedre kontrast */
 }
+
+/* Styling for Bar Introduction Section with Black Background and Fading Effect */
+section.container-fluid.bg-light {
+    background: linear-gradient(to bottom, rgb(245, 20, 20), rgba(79, 44, 233, 0.7)); /* Sort baggrund med fading-effekt */
+    padding: 60px 0; /* Øg padding for at give god plads til indholdet */
+    text-align: center;
+    color: white; /* Hvid tekst for bedre kontrast mod den sorte baggrund */
+}
+
+section.container-fluid.bg-light h2 {
+    font-size: 36px; /* Større fontstørrelse for overskriften */
+    margin-bottom: 20px; /* Afstand mellem overskriften og teksten */
+    font-family: 'Arial', sans-serif; /* En simpel og moderne skrifttype */
+    font-weight: bold;
+    text-transform: uppercase; /* Gør overskriften mere fremtrædende */
+}
+
+section.container-fluid.bg-light p {
+    font-size: 18px;
+    color: white; /* Hvid tekst for bedre synlighed på den mørke baggrund */
+    max-width: 800px; /* Begræns tekstbredden for at undgå lange linjer */
+    margin: 0 auto 30px auto; /* Centrer teksten og skab afstand nedenunder */
+    line-height: 1.6; /* Gør linjeafstanden større for bedre læsbarhed */
+    font-family: 'Georgia', serif; /* Serif-skrifttype for en mere elegant følelse */
+}
+
+section.container-fluid.bg-light .row {
+    display: flex;
+    justify-content: center; /* Centrer indholdet horisontalt */
+    align-items: center;
+    flex-direction: column; /* Gør sektionen vertikal på mindre skærme */
+}
+
+/* Container settings */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Section Titles */
+h1 {
+    font-weight: bold;
+    font-size: 3rem;
+    color: #f4f4f4;  /* Rød farve for overskrifter */
+    margin-bottom: 20px;
+}
+
+/* Section Titles */
+h2 {
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: #f4f4f4;  /* Rød farve for overskrifter */
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+/* Card settings */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Image styling */
+.card-img-top {
+    width: 100%;
+    height: 300px;  /* Reduceret højde på billederne */
+    object-fit: cover;  /* Bibehold zoom-effekten */
+    object-position: center;  /* Centrer billedet */
+    border-bottom: 3px solid #e2e2e2;
+}
+
+/* Card Body */
+.card-body {
+    padding: 15px;
+    text-align: center;
+    background-color: #270645;  /* Mørk lilla baggrund for kortene */
+}
+
+/* Card Title */
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #f4f4f4;  /* Lysere tekstfarve for titler */
+}
+
+.ingrediens {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #27c048;  /* Lysere tekstfarve for beskrivelsen */
+    margin-bottom: 10px;
+}
+
+/* Card Text */
+.card-items {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #ccc;  /* Lysere tekstfarve for beskrivelsen */
+    margin-bottom: 10px;
+}
+
+/* Card Text */
+.card-text {
+    font-size: 0.9rem;
+    color: #ccc;  /* Lysere tekstfarve for beskrivelsen */
+    margin-bottom: 10px;
+}
+
+/* Price Text */
+.text-success {
+    font-weight: bold;
+    color: #28a745;  /* Grøn farve for pris */
+    font-size: 1.1rem;
+}
+
+/* Row and column layout */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.col-md-4 {
+    flex: 1 1 calc(33.333% - 20px);
+    max-width: calc(33.333% - 20px);
+    margin-bottom: 30px;
+}
+
+/* Responsive design for small screens */
+@media (max-width: 768px) {
+    .col-md-4 {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
 
 /* Styling til footer */
 footer {
@@ -321,6 +464,38 @@ footer a:hover {
         right: -250px; /* Skjult som standard */
     }
 
+    .card-title {
+        font-size: 1rem; /* Endnu mindre titelstørrelse */
+    }
+
+    .card-body {
+        padding: 10px; /* Mindre padding på meget små skærme */
+    }
+
+    .card-img-top {
+        height: 100%; /* Yderligere reduktion af billedhøjde */
+        width: 350px;
+        margin-left: 100px;
+    }
+
+    section.container-fluid.bg-light h1 {
+        font-size: 28px; /* Reducer størrelsen på overskriften */
+        margin-bottom: 15px; /* Mindre afstand mellem overskrift og tekst */
+    }
+
+    section.container-fluid.bg-light p {
+        font-size: 16px; /* Reducer fontstørrelsen på paragrafen */
+        max-width: 90%; /* Øg bredden for at fylde mere plads */
+        margin: 0 auto 20px auto; /* Mindre margin */
+        line-height: 1.4; /* Mindre linjeafstand for kompakt tekst */
+    }
+
+    h2 {
+        font-size: 2rem;
+        text-transform: capitalize;
+        text-decoration: underline;
+    }
+
     footer {
         font-size: 11px; /* Justér fontstørrelse yderligere for meget små skærme */
     }
@@ -343,6 +518,38 @@ footer a:hover {
         display: block; /* Vis menu-ikonet */
         margin: 40px;
         width: 30px;
+    }
+
+    .card-title {
+        font-size: 1rem; /* Endnu mindre titelstørrelse */
+    }
+
+    .card-body {
+        padding: 10px; /* Mindre padding på meget små skærme */
+    }
+
+    .card-img-top {
+        height: 100%; /* Yderligere reduktion af billedhøjde */
+        width: 250px;
+        margin-left: 100px;
+    }
+
+    section.container-fluid.bg-light h1 {
+        font-size: 24px; /* Reducer størrelsen på overskriften endnu mere */
+        margin-bottom: 10px; /* Mindre afstand mellem overskrift og tekst */
+    }
+
+    section.container-fluid.bg-light p {
+        font-size: 14px; /* Reducer fontstørrelsen på paragrafen yderligere */
+        max-width: 90%; /* Maksimere bredden på teksten */
+        margin: 0 auto 15px auto; /* Mindre margin */
+        line-height: 1.3; /* Yderligere reduktion af linjeafstand */
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        text-transform: capitalize;
+        text-decoration: underline;
     }
 
     footer {
