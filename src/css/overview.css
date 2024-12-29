@@ -337,14 +337,118 @@ h2 {
     margin-bottom: 30px;
 }
 
-/* Responsive design for small screens */
-@media (max-width: 768px) {
-    .col-md-4 {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
+/* Styling for BilledKarussel */
+.carousel-container {
+    background-color: #270645; /* Mørk baggrundsfarve */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
+.carousel-inner img {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.6); /* Gennemsigtig baggrund */
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff; /* Lys tekst */
+    font-size: 1.2rem;
+    text-align: center;
+    max-width: 90%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.carousel-indicators .active {
+    background-color: #000;
+}
+
+
+/* Styling for FAQ-Sektion */
+.accordion-header .accordion-button {
+    font-weight: bold;
+    background-color: #270645;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #f4f4f4;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Styling toggle pilen */
+.accordion-header .accordion-button::after {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin-left: auto;
+    vertical-align: middle;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 5.646a.5.5 0 0 1 .708 0L8 11.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transition: background-color 0.3s ease, background-image 0.3s ease;
+}
+
+/* Sort pil, når musen holdes over */
+.accordion-header .accordion-button:hover::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='black' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 5.646a.5.5 0 0 1 .708 0L8 11.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+}
+
+/* Hover styling for button */
+.accordion-header .accordion-button:hover {
+    background-color: #e9ecef;
+    color: #000;
+}
+
+.accordion-body {
+    background-color: #fdfdfd;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+}
+
+.accordion-item {
+    margin-bottom: 10px;
+}
+
+h2.accordion-header {
+    margin: 0;
+}
+
+/* Container spacing and alignment */
+.container .container.my-4 {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.container.col-md-4 h3 {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
 
 /* Styling til footer */
 footer {

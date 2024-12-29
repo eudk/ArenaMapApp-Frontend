@@ -51,7 +51,7 @@
                 </li>
             </ul>
         </nav>
-    </header><br><br><br><br><br><br>
+    </header>
 
     <!-- Slide menu container (hidden by default) -->
     <div id="slide-menu">
@@ -93,11 +93,78 @@
                 </ul>
             </li>
         </ul>
-    </div>
+    </div><br><br>
 
-    
-    
-    <br><br><br><br><br><br><br><br><br>
+    <!-- Billedkarussel -->
+    <div class="container my-4 carousel-container">
+        <div id="eventhallCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../images/eventhall/Event1.jpg" class="d-block w-100" alt="Event 1">
+                    <div class="carousel-caption">Velkommen til Royal Arena - Dit sted for uforglemmelige oplevelser</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../images/eventhall/Event2.jpg" class="d-block w-100" alt="Event 2">
+                    <div class="carousel-caption">Oplev fantastiske koncerter og shows</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../images/eventhall/Event3.jpg" class="d-block w-100" alt="Event 3">
+                    <div class="carousel-caption">En arena bygget til dine drømme</div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#eventhallCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Forrige</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#eventhallCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Næste</span>
+            </button>
+        </div>
+    </div><br>
+
+    <!-- FAQ-sektion -->
+    <div class="container my-4">
+        <h3 class="mb-4">Ofte stillede spørgsmål</h3>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h3 class="accordion-header" id="faq1">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                        Hvordan kommer jeg til Royal Arena?
+                    </button>
+                </h3>
+                <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Du kan tage offentlig transport såsom metro eller busser, eller du kan benytte parkeringspladserne tæt på arenaen.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header" id="faq2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                        Hvad må jeg tage med ind i arenaen?
+                    </button>
+                </h3>
+                <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Du må ikke tage mad og drikke med ind, men du kan købe snacks og drikkevarer inde i arenaen.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header" id="faq3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                        Er arenaen tilgængelig for kørestolsbrugere?
+                    </button>
+                </h3>
+                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Ja, arenaen er tilgængelig for kørestolsbrugere, og der er dedikerede pladser tilgængelige.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br><br><br><br>
 
     <footer>
         <div class="footer-container">
