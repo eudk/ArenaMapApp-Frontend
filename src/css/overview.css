@@ -551,8 +551,7 @@ footer a:hover {
     }
 }
 
-@media (max-width: 768px) {
-    
+@media (max-width: 768px) { 
     .navbar {
         display: none;
     }
@@ -568,6 +567,21 @@ footer a:hover {
         right: -250px; /* Skjult som standard */
     }
 
+    .carousel-caption {
+        font-size: 1rem; /* Mindre tekst */
+        padding: 8px 16px; /* Mindre padding */
+    }
+
+    .col-md-4 {
+        flex: 1 1 75%; /* Reducér bredden til 75% af skærmen i stedet for 80% */
+        max-width: 65%; /* Gør kolonnerne lidt smallere */
+        margin: 0 auto 20px; /* Centrér kolonnerne og tilføj margin i bunden */
+    }
+
+    .card {
+        margin: 0 auto; /* Sørg for, at kortene er centreret */
+    }
+
     .card-title {
         font-size: 1rem; /* Endnu mindre titelstørrelse */
     }
@@ -579,7 +593,6 @@ footer a:hover {
     .card-img-top {
         height: 100%; /* Yderligere reduktion af billedhøjde */
         width: 350px;
-        margin-left: 100px;
     }
 
     section.container-fluid.bg-light h1 {
@@ -612,8 +625,7 @@ footer a:hover {
     }
 }
 
-@media (max-width: 576px) {
-    
+@media (max-width: 576px) { 
     .navbar {
         display: none;
     }
@@ -622,6 +634,21 @@ footer a:hover {
         display: block; /* Vis menu-ikonet */
         margin: 40px;
         width: 30px;
+    }
+
+    .carousel-caption {
+        font-size: 0.7rem; /* Endnu mindre tekst */
+        padding: 6px 12px; /* Mindre padding */
+    }
+
+    .col-md-4 {
+        flex: 1 1 85%; /* Reducér bredden til 85% af skærmen i stedet for 90% */
+        max-width: 60%; /* Gør kolonnerne lidt smallere */
+        margin: 0 auto 15px; /* Mindre margin i bunden for små skærme */
+    }
+
+    .card {
+        margin: 0 auto; /* Sørg for, at kortene er centreret */
     }
 
     .card-title {
@@ -635,7 +662,6 @@ footer a:hover {
     .card-img-top {
         height: 100%; /* Yderligere reduktion af billedhøjde */
         width: 250px;
-        margin-left: 100px;
     }
 
     section.container-fluid.bg-light h1 {
