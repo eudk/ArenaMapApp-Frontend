@@ -203,6 +203,137 @@ body {
     text-align: center;
 }
 
+/* Styling til login-container */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    padding: 20px;
+    background: #270645;
+    color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 50px auto;
+}
+
+/* Overskrift styling */
+.login-container h1 {
+    font-size: 3em;
+    color: #f4f4f4;
+    margin-bottom: 20px;
+}
+
+/* Formular styling */
+.login-form {
+    width: 100%;
+}
+
+.login-form .form-group {
+    margin-bottom: 15px;
+}
+
+.login-form label {
+    display: flex;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.login-form .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.login-form .btn {
+    width: 50%;
+    padding: 10px;
+    font-size: 1.2em;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-form .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Styling til tilføj-ny-vare formular */
+.text-center.mb-4 {
+    color: #f4f4f4;
+    font-size: 30px;
+}
+
+#add-product-form {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Montserrat', sans-serif;
+}
+
+#add-product-form .form-label {
+    font-weight: 600;
+    color: #333;
+}
+
+#add-product-form .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 8px 12px;
+    transition: border-color 0.3s;
+}
+
+#add-product-form .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#add-product-form .form-select {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+#add-product-form textarea {
+    resize: none;
+}
+
+#add-product-form .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+#add-product-form .btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+#add-product-form .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+#add-product-form .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
 /* Styling til footer */
 footer {
     background-color: #270645; /* Match headerens farve */
@@ -268,6 +399,15 @@ footer a:hover {
         gap: 15px;
     }
 
+    .login-container {
+        padding: 15px;
+        max-width: 350px;
+    }
+
+    .login-container h1 {
+        font-size: 2.5em;
+    }
+
     footer {
         font-size: 13px; /* Justér fontstørrelse yderligere for meget små skærme */
     }
@@ -290,6 +430,20 @@ footer a:hover {
     .navbar ul li a {
         font-size: 14px;
         padding: 8px 10px;
+    }
+
+    .login-container {
+        padding: 10px;
+        max-width: 320px;
+    }
+
+    .login-container h1 {
+        font-size: 2em;
+    }
+
+    .login-form .btn {
+        font-size: 1.1em;
+        padding: 8px;
     }
 
     footer {
@@ -321,6 +475,54 @@ footer a:hover {
         right: -250px; /* Skjult som standard */
     }
 
+    .login-container {
+        padding: 10px;
+        max-width: 300px;
+        margin: 20px auto;
+        height: 50vh;
+    }
+
+    .login-container h1 {
+        font-size: 1.8em;
+        text-align: center;
+    }
+
+    .login-form label {
+        font-size: 14px;
+    }
+
+    .login-form .form-control {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .login-form .btn {
+        font-size: 1em;
+        padding: 8px;
+    }
+
+    .text-center.mb-4 {
+        font-size: 24px; /* Mindre fontstørrelse */
+    }
+
+    #add-product-form {
+        max-width: 90%; /* Fylder mere af skærmen */
+        margin: 30px auto; /* Mindre margin */
+        padding: 20px; /* Tilføj lidt indvendig plads */
+    }
+
+    #add-product-form .form-control,
+    #add-product-form .form-select {
+        font-size: 12px; /* Mindre fontstørrelse */
+        padding: 6px 10px; /* Mindre padding */
+    }
+
+    #add-product-form .btn-success, 
+    #add-product-form .btn-secondary {
+        font-size: 14px; /* Justeret knaptekst */
+        padding: 8px 12px; /* Mindre padding på knapper */
+    }
+
     footer {
         font-size: 11px; /* Justér fontstørrelse yderligere for meget små skærme */
     }
@@ -343,6 +545,55 @@ footer a:hover {
         display: block; /* Vis menu-ikonet */
         margin: 40px;
         width: 30px;
+    }
+
+    .login-container {
+        padding: 8px;
+        max-width: 260px;
+        margin: 10px auto;
+        box-shadow: none;
+        border-radius: 5px;
+        height: 45vh;
+    }
+
+    .login-container h1 {
+        font-size: 1.5em;
+    }
+
+    .login-form label {
+        font-size: 12px;
+    }
+
+    .login-form .form-control {
+        padding: 6px;
+        font-size: 0.8em;
+    }
+
+    .login-form .btn {
+        font-size: 0.9em;
+        padding: 6px;
+    }
+
+    .text-center.mb-4 {
+        font-size: 20px; /* Endnu mindre fontstørrelse */
+    }
+
+    #add-product-form {
+        max-width: 80%; /* Fylder hele skærmen */
+        margin: 20px auto; /* Mindre margin */
+        padding: 15px; /* Mindre padding */
+    }
+
+    #add-product-form .form-control,
+    #add-product-form .form-select {
+        font-size: 10px; /* Mindre fontstørrelse */
+        padding: 4px 8px; /* Mindre padding */
+    }
+
+    #add-product-form .btn-success, 
+    #add-product-form .btn-secondary {
+        font-size: 12px; /* Mindre tekst på knapper */
+        padding: 6px 8px; /* Mindre padding på knapper */
     }
 
     footer {

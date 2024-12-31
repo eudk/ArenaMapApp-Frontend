@@ -51,7 +51,7 @@
                 </li>
             </ul>
         </nav>
-    </header><br><br><br><br><br><br>
+    </header><br><br><br>
 
     <!-- Slide menu container (hidden by default) -->
     <div id="slide-menu">
@@ -95,9 +95,20 @@
         </ul>
     </div>
 
-    
-    
-    <br><br><br><br><br><br><br><br><br>
+    <main class="login-container">
+        <h1>Log ind</h1>
+        <form action="/login" method="POST" class="login-form">
+            <div class="form-group">
+                <label for="username">Brugernavn:</label>
+                <input type="text" id="username" name="username" required class="form-control" placeholder="Dit navn?">
+            </div>
+            <div class="form-group">
+                <label for="password">Kodeord:</label>
+                <input type="password" id="password" name="password" required class="form-control" placeholder="Vælg en stærk kode">
+            </div>
+            <button type="submit" class="btn btn-primary">Log ind</button>
+        </form>
+    </main><br><br><br>
 
     <footer>
         <div class="footer-container">

@@ -133,4 +133,80 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+
+    // Det er koden til login.html
+    // Denne kode nede under virker ikke, så der skal noget andet backend
+    // Det vil være fedt, hvis man kunne log ind til at komme på product.html og view.html
+    const express = require('express');
+    const bodyParser = require('body-parser');
+    const session = require('express-session');
+
+    const app = express();
+    const PORT = 3000;
+
+    // Dumme data for demonstration
+    const users = {
+    worker1: 'password123', // username: password
+    };
+
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(session({
+    secret: 'royal-arena-secret',
+    resave: false,
+    saveUninitialized: true,
+    }));
+
+    // Tjener static filer
+    app.use(express.static('public'));
+
+    // Login endpoint
+    app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+
+    if (users[username] && users[username] === password) {
+        req.session.user = username;
+        res.redirect('/product.html'); // Vendet tilbage til product.html efter login
+    } else {
+        res.send('<h1>Login failed</h1><a href="/login.html">Try again</a>');
+    }
+    });
+
+    // Middleware to protect routes
+    function isAuthenticated(req, res, next) {
+    if (req.session.user) {
+        return next();
+    }
+    res.redirect('/login.html');
+    }
+
+    // Sikre routen
+    app.get('/product.html', isAuthenticated, (req, res) => {
+    res.sendFile(__dirname + '/public/product.html');
+    });
+
+    app.get('/view.html', isAuthenticated, (req, res) => {
+    res.sendFile(__dirname + '/public/view.html');
+    });
+
+    app.listen(PORT, () => {
+    console.log(`Server is running at http://localhost:${PORT}`);
+    });
+
+    //Dette er koden til product.html
+    //Denne kode virker ikke endnu, der skal noget andet backend herind
+    function saveProduct() {
+        const name = document.getElementById("product-name").value;
+        const category = document.getElementById("product-category").value;
+        const ingredients = document.getElementById("product-ingredients").value;
+        const description = document.getElementById("product-description").value;
+        const price = document.getElementById("product-price").value;
+
+        if (name && category && ingredients && description && price) {
+            alert("Varen er gemt!");
+            document.getElementById("add-product-form").reset();
+        } else {
+            alert("Udfyld venligst alle felterne.");
+        }
+    }
 });
