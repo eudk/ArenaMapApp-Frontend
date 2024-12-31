@@ -133,4 +133,112 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+    
+    // Håndterer plus/minus knapperne
+    const minusButtons = document.querySelectorAll('.minus-btn');
+    const plusButtons = document.querySelectorAll('.plus-btn');
+
+    minusButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const countSpan = this.nextElementSibling;
+            let currentCount = parseInt(countSpan.textContent);
+            if (currentCount > 0) {
+                countSpan.textContent = currentCount - 1;
+            }
+        });
+    });
+
+    plusButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const countSpan = this.previousElementSibling;
+            let currentCount = parseInt(countSpan.textContent);
+            countSpan.textContent = currentCount + 1;
+        });
+    });
+
+    // Håndtering af ordreformularen
+    document.getElementById("orderForm")?.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Hent værdier fra formularen
+        const fullName = document.getElementById("fullName").value;
+        const pickupLocation = document.getElementById("pickupLocation").value;
+        const pickupTime = document.getElementById("pickupTime").value;
+        const orderNote = document.getElementById("orderNote").value;
+
+        // Hent varer fra kurven, som vi formoder er gemt i localStorage
+        const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+        
+        // Opret en ordrebekræftelse
+        const order = {
+            fullName,
+            pickupLocation,
+            pickupTime,
+            orderNote,
+            items: cartItems.map(item => item.name),
+            totalPrice,
+        };
+
+        // Gem ordren i localStorage
+        const orders = JSON.parse(localStorage.getItem("orders")) || [];
+        orders.push(order);
+        localStorage.setItem("orders", JSON.stringify(orders));
+
+        // Simuler at gemme ordren og navigér til cart.html
+        alert(`Ordre bekræftet for ${fullName}!\nHentested: ${pickupLocation}\nAfhentning: ${pickupTime}`);
+        window.location.href = "cart.html"; // Gå til kurvsiden
+    });
+
+    // Annuller knap funktion
+    document.getElementById("cancelButton")?.addEventListener("click", function() {
+        alert("Informationen er blevet annulleret.");
+        document.getElementById("orderForm")?.reset();  // Nulstiller formularen
+    });
+
+    // Ordreliste - vis ordrer og tilføj knapper til fjern og opdater
+    const orderList = document.getElementById("order-list");
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    if (orders.length === 0) {
+        orderList.innerHTML = "<li class='list-group-item empty'>Ingen ordrer endnu.</li>";
+    } else {
+        orders.forEach((order, index) => {
+            const listItem = document.createElement("li");
+            listItem.classList.add("list-group-item", "order-item"); // Tilføjer begge klasser
+
+            // Skab indholdet med divs for at arrangere oplysningerne vandret
+            listItem.innerHTML = `
+                <div class="order-info">
+                    <div><strong>Navn:</strong><br> ${order.fullName}</div>
+                    <div><strong>Bod:</strong><br> ${order.pickupLocation}</div>
+                    <div><strong>Afhentningstid:</strong><br> ${order.pickupTime}</div>
+                    <div><strong>Bestilte varer:</strong><br> ${order.items.join(", ")}</div>
+                    <div><strong>Bemærkning:</strong><br> ${order.orderNote || "Ingen bemærkninger"}</div>
+                    <div class="order-actions">
+                        <button class="btn btn-danger btn-sm" onclick="removeOrder(${index})">Fjern</button>
+                    </div>
+                </div>
+            `;
+
+            orderList.appendChild(listItem);
+        });
+    }
+
+    // Funktion til at fjerne en ordre
+    window.removeOrder = function(index) {
+        const orders = JSON.parse(localStorage.getItem("orders")) || [];
+        orders.splice(index, 1); // Fjern ordren på den specifikke index
+        localStorage.setItem("orders", JSON.stringify(orders)); // Gem den opdaterede liste
+        location.reload(); // Genindlæs siden for at opdatere listen
+    };
+
+    // Funktion til at opdatere en ordre
+    window.updateOrder = function(index) {
+        const orders = JSON.parse(localStorage.getItem("orders")) || [];
+        const order = orders[index];
+
+        // Here you could implement a form pre-fill or editing feature.
+        alert(`Du kan nu opdatere ordren for: ${order.fullName}`);
+    };
 });
