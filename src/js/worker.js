@@ -134,6 +134,41 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Specifik funktionalitet for view.html
+    const orderList = document.getElementById("order-list");
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    if (orders.length === 0) {
+        orderList.innerHTML = "<li class='list-group-item empty'>Ingen ordrer endnu.</li>";
+    } else {
+        orders.forEach((order, index) => {
+            const listItem = document.createElement("li");
+            listItem.classList.add("list-group-item", "order-item");
+
+            listItem.innerHTML = `
+                <div class="order-info">
+                    <div><strong>Navn:</strong><br> ${order.fullName}</div>
+                    <div><strong>Bod:</strong><br> ${order.pickupLocation}</div>
+                    <div><strong>Afhentningstid:</strong><br> ${order.pickupTime}</div>
+                    <div><strong>Bestilte varer:</strong><br> ${order.items.join(", ")}</div>
+                    <div><strong>Bemærkning:</strong><br> ${order.orderNote || "Ingen bemærkninger"}</div>
+                    <div class="order-actions">
+                        <button class="btn btn-success btn-sm" onclick="removeOrder(${index})">Godkend</button>
+                    </div>
+                </div>
+            `;
+            orderList.appendChild(listItem);
+        });
+    }
+    
+    // Funktion til at fjerne en ordre
+    window.removeOrder = function(index) {
+        const orders = JSON.parse(localStorage.getItem("orders")) || [];
+        orders.splice(index, 1); 
+        localStorage.setItem("orders", JSON.stringify(orders)); 
+        location.reload(); 
+    };
+
 
     // Det er koden til login.html
     // Denne kode nede under virker ikke, så der skal noget andet backend

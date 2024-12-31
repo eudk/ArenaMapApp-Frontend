@@ -203,6 +203,150 @@ body {
     text-align: center;
 }
 
+/* Til view.html*/
+/* Styling til sektionen - For ordreliste */
+.order-intro {
+    margin: 30px auto;
+    max-width: 1200px;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #270645, #4a246a); /* Flot gradient baggrund */
+    color: white;
+    border-radius: 12px; /* Mere afrundede kanter */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Dybere skygge for mere dybde */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Glidende hover-effekt */
+}
+
+.order-intro:hover {
+    transform: scale(1.02); /* Lidt forstørrelse ved hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* Forstærket skygge ved hover */
+}
+
+.order-intro .info {
+    margin: 0 auto;
+    max-width: 800px; /* Gør sektionen lidt smallere for bedre fokus */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.3); /* Transparent overlay for tekst */
+    border-radius: 8px; /* Afrundede kanter for kontrast */
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.2); /* Indre skygge for dybde */
+}
+
+.order-intro h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+    color: #ff8000; /* Guld farve for at skille sig ud */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Let skygge for tekst */
+}
+
+.order-intro p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: #f9f9f9; /* Lysere tekstfarve for bedre kontrast */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Let skygge for tekst */
+    margin-top: 10px;
+}
+
+/* Styling for ordreliste */
+.order-item {
+    border: 1px solid #ddd; /* Let grå ramme */
+    border-radius: 8px; /* Afrundede hjørner */
+    padding: 15px; /* Mindre afstand omkring tekst for at få det til at passe bedre */
+    margin-bottom: 15px; /* Afstand mellem ordrene */
+    background-color: #f9f9f9; /* Lys grå baggrund */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Let skygge for at fremhæve */
+    display: flex; /* Flexbox for at placere elementerne ved siden af hinanden */
+    flex-wrap: wrap; /* Gør det muligt at bryde linjen hvis der ikke er nok plads */
+    justify-content: space-between; /* Fordeler pladsen ligeligt */
+}
+
+.order-item div {
+    flex: 1; /* Gør hver sektion fleksibel */
+    margin-right: 15px; /* Afstand mellem sektionerne */
+}
+
+.order-item div:last-child {
+    margin-right: 0; /* Fjerner margin fra den sidste sektion */
+}
+
+/* Styling til ordreliste, når der ikke er nogen ordrer */
+#order-list.empty {
+    text-align: center;
+    color: #b95151;
+    font-size: 1.2rem;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Styling til overskriften */
+h1 {
+    font-size: 2rem;
+    color: #ffd700;
+    font-weight: bold;
+}
+
+/* Styling af containeren */
+.container.mt-5 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 15px;
+    background-color: #270645;
+}
+
+/* For at arrangere ordrene vandret */
+.order-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Plads mellem elementer */
+}
+
+.order-info div {
+    flex-basis: 18%; /* Hver div får en minimum størrelse */
+    margin-bottom: 5px; /* Tilføjet lidt plads under hver div */
+}
+
+/* Handlinger til hver ordre */
+.order-actions {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.order-actions button {
+    min-width: 60px; /* Mindre bredde på knapperne */
+    font-size: 14px; /* Lidt mindre font-størrelse */
+    padding: 5px 10px; /* Mindre padding i knapperne */
+}
+
+.order-actions button:hover {
+    opacity: 0.8; /* Reduceret opacitet på hover */
+}
+
+/* Styling til godkend-knappen */
+.order-actions .btn-success {
+    margin-left: 20px;
+}
+
+/* For at gøre ordreliste knapperne pænere */
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px; /* Mindre padding */
+    border: 1px solid #ddd;
+    margin-bottom: 8px; /* Mindre margin mellem ordrene */
+}
+
+.list-group-item.empty {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+}
+
+
 /* Styling til login-container */
 .login-container {
     display: flex;
@@ -399,6 +543,18 @@ footer a:hover {
         gap: 15px;
     }
 
+    .order-intro {
+        padding: 20px 15px; /* Reducer padding på intro-sektionen */
+    }
+
+    .order-intro h1 {
+        font-size: 2.5rem; /* Reducer overskriftens størrelse */
+    }
+
+    .order-intro p {
+        font-size: 1.2rem; /* Mindre tekststørrelse i intro */
+    }
+
     .login-container {
         padding: 15px;
         max-width: 350px;
@@ -430,6 +586,38 @@ footer a:hover {
     .navbar ul li a {
         font-size: 14px;
         padding: 8px 10px;
+    }
+
+    .item {
+        flex: 1 1 calc(50% - 15px); /* 2 kolonner layout */
+    }
+
+    .item-controls button {
+        font-size: 1rem;
+        padding: 6px 10px;
+    }
+
+    .item-controls .item-count {
+        font-size: 1rem;
+        width: 15px;
+    }
+
+    .order-info div {
+        flex-basis: 45%; /* Gør elementerne bredere ved mindre skærme */
+        font-size: 14px;
+    }
+
+    /* Justeringer til knapper */
+    .order-actions button {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+    .order-intro h1 {
+        font-size: 2.5rem;
+    }
+    .order-intro p {
+        font-size: 1.2rem;
     }
 
     .login-container {
@@ -473,6 +661,66 @@ footer a:hover {
     /* Sørg for at slide-menuen kan vises korrekt på små skærme */
     #slide-menu {
         right: -250px; /* Skjult som standard */
+    }
+
+    .item {
+        flex: 1 1 calc(100% - 15px); /* 1 kolonne layout */
+    }
+
+    .item-info {
+        margin-right: 10px;
+    }
+
+    .item h4 {
+        font-size: 0.8rem;
+    }
+
+    .item p.price {
+        font-size: 0.8rem;
+    }
+
+    .item-controls button {
+        font-size: 0.9rem;
+        padding: 5px 8px;
+    }
+
+    .item-controls .item-count {
+        font-size: 0.9rem;
+        width: 10px;
+    }
+
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    .order-info div {
+        flex-basis: 100%; /* Elementerne bliver mere vertikalt orienteret */
+        font-size: 10px;
+    }
+
+    .order-actions button {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+
+    .order-actions .btn-success {
+        margin-right: 10px;
+    }
+
+    .list-group-item {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .order-intro {
+        padding: 20px 15px;
+    }
+
+    .order-intro h1 {
+        font-size: 2rem;
+    }
+    .order-intro p {
+        font-size: 1rem;
     }
 
     .login-container {
@@ -545,6 +793,47 @@ footer a:hover {
         display: block; /* Vis menu-ikonet */
         margin: 40px;
         width: 30px;
+    }
+
+    h1 {
+        font-size: 1rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .order-info div {
+        flex-basis: 100%;
+        font-size: 8px;
+    }
+
+    .order-actions button {
+        font-size: 8px;
+        padding: 2px 4px;
+    }
+
+    .order-actions .btn-success {
+        margin-right: 10px;
+    }
+
+    .list-group-item {
+        font-size: 10px;
+        padding: 4px;
+    }
+
+    .order-intro {
+        padding: 15px 10px;
+        text-align: left;
+    }
+
+    .order-intro h1 {
+        font-size: 1.8rem;
+    }
+
+    .order-intro p {
+        font-size: 0.9rem;
     }
 
     .login-container {

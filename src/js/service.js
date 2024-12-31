@@ -135,6 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     
     // Håndterer plus/minus knapperne
+    // Specifik funktionalitet for cart.html og order.html
     const minusButtons = document.querySelectorAll('.minus-btn');
     const plusButtons = document.querySelectorAll('.plus-btn');
 
@@ -205,9 +206,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         orders.forEach((order, index) => {
             const listItem = document.createElement("li");
-            listItem.classList.add("list-group-item", "order-item"); // Tilføjer begge klasser
+            listItem.classList.add("list-group-item", "order-item");
 
-            // Skab indholdet med divs for at arrangere oplysningerne vandret
             listItem.innerHTML = `
                 <div class="order-info">
                     <div><strong>Navn:</strong><br> ${order.fullName}</div>
@@ -215,30 +215,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div><strong>Afhentningstid:</strong><br> ${order.pickupTime}</div>
                     <div><strong>Bestilte varer:</strong><br> ${order.items.join(", ")}</div>
                     <div><strong>Bemærkning:</strong><br> ${order.orderNote || "Ingen bemærkninger"}</div>
-                    <div class="order-actions">
-                        <button class="btn btn-danger btn-sm" onclick="removeOrder(${index})">Fjern</button>
-                    </div>
                 </div>
             `;
-
             orderList.appendChild(listItem);
         });
     }
-
-    // Funktion til at fjerne en ordre
-    window.removeOrder = function(index) {
-        const orders = JSON.parse(localStorage.getItem("orders")) || [];
-        orders.splice(index, 1); // Fjern ordren på den specifikke index
-        localStorage.setItem("orders", JSON.stringify(orders)); // Gem den opdaterede liste
-        location.reload(); // Genindlæs siden for at opdatere listen
-    };
-
-    // Funktion til at opdatere en ordre
-    window.updateOrder = function(index) {
-        const orders = JSON.parse(localStorage.getItem("orders")) || [];
-        const order = orders[index];
-
-        // Here you could implement a form pre-fill or editing feature.
-        alert(`Du kan nu opdatere ordren for: ${order.fullName}`);
-    };
 });
