@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page - Map</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <style>
+        #map-container {
+            height: 85vh;
+            position: relative;
+        }
+
+        #floor-select-container {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #floor-select {
+            width: 150px;
+        }
+
+        #info-button-container {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">RA App / Hovedopgave projekt</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="order.html">Opret bestiling</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="employee-login.html">Medarbejder Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/thomas/html/simplepage.html">Simpelt kort</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="app" class="container-fluid">
+        <!-- Map Container -->
+        <div id="map-container"></div>
+
+        <!-- Floor Selection -->
+        <div id="floor-select-container">
+            <label for="floor-select" class="form-label">Vælg etage:</label>
+            <select id="floor-select" class="form-select">
+                <option value="1" selected>Etage 1</option>
+                <option value="2">Etage 2</option>
+                <option value="3">Etage 3</option>
+            </select>
+        </div>
+
+
+        <!-- Info knap -->q
+        <div id="info-button-container">
+            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#infoModal">Info</button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">Information om appen</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Velkommen til RA App!</p>
+                    <p>Dette er en prototype for vores hovedopgave</p>
+                    <ul>
+                        <li>Boder, menu og login kan tage op til 2min at loade til tider pga database</li>
+
+                        <li>Vælg etage her på forsiden for at se boder dynamisk ændre placering</li>
+                        <li>Markører på kortet kan tage tid at loade pga databasen se evt simpelt kort i mellemtiden</li>
+                        <li>Nå boder er loadet kan du frit klikke ind på dem og se menu, bestilling af mad sker i navbaren</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Luk</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.9); display: flex; justify-content: center; align-items: center; z-index: 2000; display: none;">
+        <div>
+            <p style="font-size: 1.5rem; color: #007bff; font-weight: bold;">Henter boder, vent venligst...</p>
+            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/map.js"></script>
+</body>
+</html>

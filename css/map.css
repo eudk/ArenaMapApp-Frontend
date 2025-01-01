@@ -1,0 +1,12 @@
+.floor-selector {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+}
+
+#map-container {
+    height: 85vh;
+    width: 100%;
+}

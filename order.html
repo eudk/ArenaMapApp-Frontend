@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Menu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <div id="app" class="container mt-4">
+        <!-- Spinner Overlay -->
+        <div v-if="isLoading" class="spinner-overlay">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+        <h1 class="text-center">Ordre Menu</h1>
+
+        <!-- Categories -->
+        <div v-if="menuItemsGrouped && Object.keys(menuItemsGrouped).length">
+            <div v-for="(items, category) in menuItemsGrouped" :key="category">
+                <div class="category-title">{{ category }}</div>
+                <div class="row">
+                    <div v-for="item in items" :key="item.itemId" class="col-md-6 col-lg-4">
+                        <div class="menu-item">
+                            <img :src="'data:image/png;base64,' + item.imageBase64" v-if="item.imageBase64" alt="Item Image">
+                            <div class="details">
+                                <h5>{{ item.name }}</h5>
+                                <p>{{ item.price }} DKK</p>
+                                <button class="btn btn-sm btn-primary" @click="addToCart(item)">Tilføj til kurv</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Basket -->
+        <div v-if="basket.length">
+            <h2 class="mt-4">Kurv</h2>
+            <ul class="list-group mb-3">
+                <li v-for="item in basket" :key="item.itemId" class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ item.name }} (x{{ item.quantity }}) - {{ item.subtotal }} DKK
+                    <button class="btn btn-sm btn-danger" @click="removeFromCart(item)">Remove</button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Checkout -->
+        <div v-if="basket.length">
+            <h2>Bestil</h2>
+            <form @submit.prevent="submitOrder">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" v-model="email" class="form-control" required>
+                </div>
+                <button class="btn btn-success w-100" :disabled="!basket.length || isLoading">Placer ordre</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar-loader.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+    <script src="js/order.js"></script>
+</body>
+</html>

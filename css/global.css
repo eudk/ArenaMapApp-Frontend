@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #182A61;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+main {
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+#map-container {
+    height: 100vh;
+    width: 100%;
+}
+
+.controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.btn {
+    background-color: #182A61;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}

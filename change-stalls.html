@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Stalls</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map-container {
+            width: 100%;
+            height: 600px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <div id="app" class="container">
+        <h1 class="text-center">Ændre boder</h1>
+        <a href="employee-dashboard.html" class="btn btn-primary btn-dashboard">Tilbage til Dashboard</a>
+
+        <!-- Map -->
+        <div id="map-container"></div>
+
+        <form @submit.prevent="addStall" class="mt-4">
+            <div class="mb-3">
+                <label for="stall-name" class="form-label">Bod navn</label>
+                <input type="text" id="stall-name" class="form-control" v-model="stall.name" required>
+            </div>
+            <div class="mb-3">
+                <label for="stall-type" class="form-label">Bod Type</label>
+                <select id="stall-type" class="form-select" v-model="stall.type" required>
+                    <option value="Toilet">Toilet</option>
+                    <option value="Bar">Bar</option>
+                    <option value="Madbod">Madbod</option>
+                    <option value="Garderobe">Garderobe</option>
+                    <option value="Udgang">Udgang</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="event-id" class="form-label">Event</label>
+                <select id="event-id" class="form-select" v-model="stall.eventId" required>
+                    <option v-for="event in events" :key="event.eventID" :value="event.eventID">
+                        {{ event.eventName }} (ID: {{ event.eventID }})
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="floor" class="form-label">Floor</label>
+                <select id="floor" class="form-select" v-model="stall.floor" required>
+                    <option value="1">Floor 1</option>
+                    <option value="2">Floor 2</option>
+                    <option value="3">Floor 3</option>
+                </select>
+            </div>
+            <div id="coordinates-display" class="mb-3">
+                <strong>Coordinates:</strong> {{ stall.coordinates || "None" }}
+            </div>
+            <button type="submit" class="btn btn-success w-100">Add Stall</button>
+        </form>
+
+        <!-- Success Modal -->
+        <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="successModalLabel">Success</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Bod er blevet tilføjet.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" @click="navigateToMap">TIlbage til kort</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h2>Eksisterende boder</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Floor</th>
+                        <th>Coordinates</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="stall in stalls" :key="stall.stallId">
+                        <td>{{ stall.stallId }}</td>
+                        <td>{{ stall.name }}</td>
+                        <td>{{ stall.type }}</td>
+                        <td>{{ stall.floor }}</td>
+                        <td>{{ stall.coordinates }}</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" @click="deleteStall(stall.stallId)">Slet</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar-loader.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/change-stalls.js"></script>
+
+</body>
+</html>

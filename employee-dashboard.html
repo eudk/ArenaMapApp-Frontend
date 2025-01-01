@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .dashboard-card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <div class="container">
+        <h1 class="text-center">Medarbejder Dashboard</h1>
+        <p id="welcome-message" class="text-center text-muted"></p> <!-- Welcome Message -->
+
+        <div class="row">
+            <!-- Scan QR Code -->
+            <div class="col-md-4">
+                <div class="card dashboard-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Scan QR Code</h5>
+                        <p class="card-text">Scan QR codes for at afslutte ordre.</p>
+                        <a href="qr-scan.html" class="btn btn-primary">Gå til QR Scanner</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Orders -->
+            <div class="col-md-4">
+                <div class="card dashboard-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Aktive ordre</h5>
+                        <p class="card-text">Se og afslut ordrer manuelt.</p>
+                        <a href="active-orders.html" class="btn btn-primary">Se ordre</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Change Stalls -->
+            <div class="col-md-4">
+                <div class="card dashboard-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Ændre boder</h5>
+                        <p class="card-text">Tilføj og slet boder i arenaen.</p>
+                        <a href="change-stalls.html" class="btn btn-primary">Ændr boder</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manage Menu -->
+            <div class="col-md-4">
+                <div class="card dashboard-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Ændr Menu</h5>
+                        <p class="card-text">Æmdr menu til de forskellige boder</p>
+                        <a href="employee-menu.html" class="btn btn-primary">Gå til menu</a>
+                    </div>
+                </div>
+            </div>
+
+          
+
+
+            <div class="col-md-4">
+                <div class="card dashboard-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Eksisterende boder</h5>
+                        <p class="card-text">Liste med alle boder.</p>
+                        <a href="existing-stalls.html" class="btn btn-primary">Eksisterende boder</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logout Button -->
+        <button onclick="logout()" class="btn btn-danger mt-4">log ud</button>
+    </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/navbar-loader.js"></script>
+    <script src="js/employee-dashboard.js"></script>
+</body>
+</html>

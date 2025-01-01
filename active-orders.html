@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktive ordre</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <div id="app" class="container mt-4">
+        <h1 class="text-center">Aktive ordre</h1>
+        <a href="employee-dashboard.html" class="btn btn-primary btn-dashboard">Tilbage til Dashboard</a>
+
+        <div v-if="orders.length">
+            <ul class="list-group mt-3">
+                <li v-for="order in orders" :key="order.orderId" class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>Order #{{ order.orderId }}</strong><br>
+                        <span>Email: {{ order.email }}</span><br>
+                        <span>Total: {{ order.totalAmount }} DKK</span><br>
+                        <span>Completed: {{ order.isCompleted ? "Yes" : "No" }}</span><br>
+                        <span>Created At: {{ new Date(order.createdAt).toLocaleString() }}</span>
+                    </div>
+                    <button v-if="!order.isCompleted" class="btn btn-success btn-sm" @click="markAsCompleted(order.orderId)">
+                        Mark as Completed
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <div v-else>
+            <p class="text-center text-muted">Ingen aktive ordrer fundet.</p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar-loader.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/active-orders.js"></script>
+    <script src="js/auth.js"></script>
+
+</body>
+</html>

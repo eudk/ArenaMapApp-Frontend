@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Menu Items</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <div id="app" class="container">
+        <h1 class="text-center">Ændr Menu</h1>
+        <a href="employee-dashboard.html" class="btn btn-primary btn-dashboard">Tilbage til Dashboard</a>
+
+        <!-- Form to Add Menu Item -->
+        <form @submit.prevent="addMenuItem" class="mt-4">
+            <div class="mb-3">
+                <label for="menu-name" class="form-label">Navn</label>
+                <input type="text" id="menu-name" class="form-control" v-model="menuItem.name" required>
+            </div>
+            <div class="mb-3">
+                <label for="menu-description" class="form-label">Beskrivelse</label>
+                <textarea id="menu-description" class="form-control" v-model="menuItem.description" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="menu-price" class="form-label">Pris (DKK)</label>
+                <input type="number" id="menu-price" class="form-control" v-model="menuItem.price" required>
+            </div>
+            <div class="mb-3">
+                <label for="menu-type" class="form-label">Bod Type</label>
+                <select id="menu-type" class="form-select" v-model="menuItem.stallType" required>
+                    <option value="Madbod">Madbod</option>
+                    <option value="Bar">Bar</option>
+                    <option value="Merchandise">Merchandise</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="menu-image" class="form-label">Foto</label>
+                <input type="file" id="menu-image" class="form-control" @change="handleImageUpload">
+            </div>
+            <button type="submit" class="btn btn-success w-100">Tilføj til Menu</button>
+        </form>
+
+        <!-- Existing Menu Items -->
+        <div class="mt-4">
+            <h2>Eksisterende Menu elementer</h2>
+            <div class="mb-3">
+                <label for="stall-type-filter" class="form-label">Filtrer efter Type</label>
+                <select id="stall-type-filter" class="form-select" v-model="selectedStallType" @change="filterMenuItems">
+                    <option value="">All</option>
+                    <option value="Madbod">Madbod</option>
+                    <option value="Bar">Bar</option>
+                    <option value="Merchandise">Merchandise</option>
+                </select>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in filteredMenuItems" :key="item.itemId">
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.description }}</td>
+                        <td>{{ item.price }}</td>
+                        <td>
+                            <img :src="'data:image/png;base64,' + item.imageBase64" alt="Menu Item Image" style="width: 100px;">
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" @click="deleteMenuItem(item.itemId)">Slet</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar-loader.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/manage-menu.js"></script>
+    <script src="js/auth.js"></script>
+
+</body>
+</html>

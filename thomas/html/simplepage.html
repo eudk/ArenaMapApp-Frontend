@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Floor Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        #navbar-container {
+            width: 100%;
+            background-color: #007bff;
+            padding: 10px 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .iframe-container {
+            width: 90%;
+            max-width: 1200px;
+            height: 80%;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div id="navbar-container">
+        <!-- Navbar content will be dynamically loaded -->
+    </div>
+
+    <!-- Floor Buttons -->
+    <div class="button-container">
+        <button onclick="loadFloor('/thomas/html/floor0.html')">Etage 1</button>
+        <button onclick="loadFloor('/thomas/html/floor1.html')">Etage 2</button>
+        <button onclick="loadFloor('/thomas/html/floor3.html')">Etage 3</button>
+    </div>
+
+    <!-- Iframe for floor display -->
+    <div class="iframe-container">
+        <iframe id="floor-frame" src="/thomas/html/floor0.html"></iframe>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar loader script
+        async function loadNavbar() {
+            const navbarContainer = document.getElementById("navbar-container");
+            const response = await fetch("../../navbar.html");
+            const navbarHtml = await response.text();
+            navbarContainer.innerHTML = navbarHtml;
+        }
+
+        // Load the navbar on page load
+        document.addEventListener("DOMContentLoaded", () => {
+            loadNavbar();
+        });
+
+        // Floor iframe loader function
+        function loadFloor(url) {
+            const iframe = document.getElementById('floor-frame');
+            iframe.src = url;
+        }
+    </script>
+</body>
+</html>

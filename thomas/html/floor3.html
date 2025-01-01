@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map - Etage 3</title>
+    <style>
+        /* Basic styling */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .map-container {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .map-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .point {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .point:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .popup {
+            display: none;
+            position: absolute;
+            background: #13215c;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .popup .close {
+            margin-top: 10px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .popup .popup-link {
+            display: inline-block;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .popup .popup-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="map-container">
+        <img src="../images/Floor3.png" alt="Map for Etage 3">
+        <!-- Points on the map -->
+        <div class="point" id="bar35-Etage3" data-info="Bar 3.5 - Drinks available here." data-link="bar.html" data-img="../images/Bar.png" style="top: 47%; left: 27%;"></div>
+        <div class="point" id="bar33-Etage3" data-info="Bar 3.3 - Drinks available here." data-link="bar.html" data-img="../images/Bar.png" style="top: 68%; left: 50%;"></div>
+        <div class="point" id="bar31-Etage3" data-info="Bar 3.1 - Drinks available here." data-link="bar.html" data-img="../images/Bar.png" style="top: 47%; left: 75%;"></div>
+        <div class="point" id="eventhall-Etage3" data-info="Event Hall - Concert details." data-link="eventhall.html" data-img="../images/Eventhall.png" style="top: 47%; left: 50%;"></div>
+        <div class="point" id="menWC1-Etage3" data-info="Men's Restroom - Clean and available." data-img="../images/MenWC.png" style="top: 33%; left: 75%;"></div>
+        <div class="point" id="menWC2-Etage3" data-info="Men's Restroom - Clean and available." data-img="../images/MenWC.png" style="top: 55%; left: 75%;"></div>
+        <div class="point" id="menWC3-Etage3" data-info="Men's Restroom - Clean and available." data-img="../images/MenWC.png" style="top: 40%; left: 27%;"></div>
+        <div class="point" id="menWC4-Etage3" data-info="Men's Restroom - Clean and available." data-img="../images/MenWC.png" style="top: 67%; left: 40%;"></div>
+        <div class="point" id="womenWC1-Etage3" data-info="Women's Restroom - Clean and available." data-img="../images/WomenWC.png" style="top: 40%; left: 75%;"></div>
+        <div class="point" id="womenWC2-Etage3" data-info="Women's Restroom - Clean and available." data-img="../images/WomenWC.png" style="top: 33%; left: 27%;"></div>
+        <div class="point" id="womenWC3-Etage3" data-info="Women's Restroom - Clean and available." data-img="../images/WomenWC.png" style="top: 54%; left: 27%;"></div>
+        <div class="point" id="womenWC4-Etage3" data-info="Women's Restroom - Clean and available." data-img="../images/WomenWC.png" style="top: 67%; left: 61%;"></div>
+    </div>
+    <div class="popup" id="popup">
+        <p id="popup-text"></p>
+        <a href="#" id="popup-link" class="popup-link">Read more</a><br>
+        <span class="close" id="popup-close">Close</span>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const points = document.querySelectorAll('.point');
+            const popup = document.getElementById('popup');
+            const popupText = document.getElementById('popup-text');
+            const popupLink = document.getElementById('popup-link');
+            const popupClose = document.getElementById('popup-close');
+
+            // Set background images for points
+            points.forEach(point => {
+                const imgSrc = point.getAttribute('data-img');
+                if (imgSrc) {
+                    point.style.backgroundImage = `url(${imgSrc})`;
+                }
+
+                // Show popup on click
+                point.addEventListener('click', (e) => {
+                    points.forEach(p => p.classList.remove('active'));
+                    point.classList.add('active');
+
+                    const info = point.getAttribute('data-info');
+                    const link = point.getAttribute('data-link');
+                    popupText.textContent = info;
+
+                    if (link) {
+                        popupLink.href = link;
+                        popupLink.style.display = "inline-block";
+                    } else {
+                        popupLink.style.display = "none";
+                    }
+
+                    popup.style.display = 'block';
+
+                    // Position the popup relative to the point
+                    const rect = point.getBoundingClientRect();
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+                    popup.style.left = `${rect.left + scrollLeft + rect.width / 2 - popup.offsetWidth / 2}px`;
+                    popup.style.top = `${rect.top + scrollTop - popup.offsetHeight - 10}px`;
+                });
+            });
+
+            // Close popup on clicking close button
+            popupClose.addEventListener('click', () => {
+                popup.style.display = 'none';
+                points.forEach(p => p.classList.remove('active'));
+            });
+
+            // Close popup if clicking outside
+            document.addEventListener('click', (e) => {
+                if (!popup.contains(e.target) && !Array.from(points).includes(e.target)) {
+                    popup.style.display = 'none';
+                    points.forEach(p => p.classList.remove('active'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>

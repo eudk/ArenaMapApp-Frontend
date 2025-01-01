@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Existing Stalls</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <div id="app" class="container">
+        <h1 class="text-center mt-4">Eksisterende boder</h1>
+        <a href="employee-dashboard.html" class="btn btn-primary btn-dashboard">Tilbage til Dashboard</a>
+
+        <!-- Loading Spinner -->
+        <div v-if="isLoading" class="text-center my-4">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+        <!-- Stalls Table -->
+        <table v-else class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>Stall ID</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Floor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="stall in stalls" :key="stall.stallId">
+                    <td>{{ stall.stallId }}</td>
+                    <td>{{ stall.name }}</td>
+                    <td>{{ stall.type }}</td>
+                    <td>{{ stall.floor }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar-loader.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/existing-stalls.js"></script>
+    <script src="js/auth.js"></script>
+
+</body>
+</html>
