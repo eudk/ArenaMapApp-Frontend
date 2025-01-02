@@ -28,7 +28,7 @@ const app = Vue.createApp({
                 console.log("Menu items loaded:", this.menuItems);
             } catch (error) {
                 console.error("Failed to fetch menu items:", error);
-                alert("Kunne ikke indlæse menuen. Prøv igen.");
+                alert("Failed to load the menu. Please try again.");
             } finally {
                 this.isLoading = false;
             }
@@ -52,19 +52,9 @@ const app = Vue.createApp({
                 this.basket.splice(index, 1);
             }
         },
-        async generateQrCode(orderId) {
-            try {
-                const qrCodeUrl = await QRCode.toDataURL(`${this.apiUrl}/api/order/${orderId}/complete`);
-                console.log("QR Code generated:", qrCodeUrl);
-                return qrCodeUrl;
-            } catch (error) {
-                console.error("Failed to generate QR Code:", error);
-                throw error;
-            }
-        },
         async submitOrder() {
             if (!this.email || this.basket.length === 0) {
-                alert("Du mangler at udfylde din email eller tilføje varer til kurven.");
+                alert("Please enter your email and add items to your cart.");
                 return;
             }
 
@@ -84,48 +74,16 @@ const app = Vue.createApp({
                 });
 
                 if (response.status === 201) {
-                    console.log("Order created OK");
-
-                    const qrCodeUrl = await this.generateQrCode(response.data.orderId);
-
-                    await this.sendEmail(orderPayload, response.data.orderId, qrCodeUrl);
-
-                    window.location.href = `order-success.html?qrCode=${encodeURIComponent(qrCodeUrl)}&email=${encodeURIComponent(this.email)}&id=${response.data.orderId}`;
+                    console.log("Order created successfully.");
+                    window.location.href = `order-success.html?email=${encodeURIComponent(this.email)}&id=${response.data.orderId}`;
                 } else {
-                    alert("Kunne ikke oprette ordren. Prøv igen.");
+                    alert("Failed to place the order. Please try again.");
                 }
             } catch (error) {
                 console.error("Order creation failed:", error.response?.data || error.message);
-                alert("Kunne ikke oprette ordren. Prøv igen.");
+                alert("Failed to place the order. Please try again.");
             } finally {
                 this.isLoading = false;
-            }
-        },
-        async sendEmail(orderPayload, orderId, qrCodeUrl) {
-            const orderDetails = orderPayload.orderItems
-                .map((item) => `MenuItem ID: ${item.menuItemId}, Quantity: ${item.quantity}`)
-                .join(", ");
-            const totalPrice = orderPayload.totalAmount;
-
-            const templateParams = {
-                customer_email: orderPayload.email,
-                order_id: orderId,
-                order_details: orderDetails,
-                total_price: `${totalPrice} DKK`,
-                qr_code: qrCodeUrl,
-            };
-// emailjs data
-            try {
-                const emailResponse = await emailjs.send(
-                    "service_rfghgq5",
-                    "template_gej0jti",
-                    templateParams,
-                    "VwBJgY9n-qoC6abQv"
-                );
-                console.log("Email sent OK:", emailResponse);
-            } catch (error) {
-                console.error("Failed to send email:", error);
-                alert("Order placed, but email could not be sent.");
             }
         },
     },
