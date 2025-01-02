@@ -8,17 +8,6 @@ const app = Vue.createApp({
         };
     },
     methods: {
-        // Generate QR Code
-        generateQrCode() {
-            const qrCodeData = `${this.apiUrl}${this.orderId}/complete`;
-            QRCode.toCanvas(document.getElementById("qrCode"), qrCodeData, function (error) {
-                if (error) {
-                    console.error("QR Code generation error:", error);
-                } else {
-                    console.log("QR code generated:", qrCodeData);
-                }
-            });
-        },
         async fetchOrderStatus() {
             try {
                 const response = await axios.get(`${this.apiUrl}${this.orderId}`);
@@ -42,10 +31,8 @@ const app = Vue.createApp({
         this.orderId = urlParams.get("id") || null;
 
         if (this.orderId) {
-            this.generateQrCode();
             this.fetchOrderStatus();
-
-            setInterval(this.fetchOrderStatus, 3000);
+            setInterval(this.fetchOrderStatus, 3000); // Poll every 3 seconds
         } else {
             console.error("Invalid order ID");
         }

@@ -10,11 +10,6 @@
             text-align: center;
             margin: 20px;
         }
-        .qr-code {
-            margin: 20px auto;
-            max-width: 300px;
-            max-height: 300px;
-        }
         .status.not-completed {
             color: red;
             font-weight: bold;
@@ -29,11 +24,13 @@
     <div id="navbar-container"></div>
     <div id="app" class="container">
         <h1>Din ordre er blevet bekræftet!</h1>
-        <p>Afhent i nærmeste bod ved at vise denne QR kode</p>
+        <h1>En medarbejder ved boderne kan hjælpe med at afslutte din ordre</h1>
+
+        <p>QR kode virker kun lokalt</p>
+
         <p>Email: {{ email }}</p>
         <p>Order ID: {{ orderId }}</p>
-        <canvas id="qrCode" class="qr-code"></canvas>
-        <p class="status" :class="isCompleted === 1 ? 'Afhentet' : 'not-completed'">
+        <p class="status" :class="isCompleted === 1 ? 'completed' : 'not-completed'">
             {{ isCompleted === 1 ? 'Afhentet' : 'Ikke afhentet' }}
         </p>
     </div>
@@ -42,7 +39,6 @@
     <script src="js/navbar-loader.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
     <script src="js/order-success.js"></script>
 </body>
 </html>
