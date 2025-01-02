@@ -18,7 +18,7 @@ const app = Vue.createApp({
                         window.location.href = `order-complete.html?id=${this.orderId}`;
                     }
                 } else {
-                    console.error("Failed to fetch order status");
+                    console.error("Failed to fetch order status.");
                 }
             } catch (error) {
                 console.error("Error fetching order status:", error);
