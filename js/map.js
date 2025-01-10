@@ -139,17 +139,17 @@ const app = Vue.createApp({
                 console.warn(`No overlay found for floor: ${floor}`);
             }
         },
-
         async fetchStalls() {
             this.isLoading = true; 
+            document.getElementById("loading-indicator").style.display = "block"; // Show loader
             console.log("Fetching stalls...");
             try {
                 const response = await axios.get("https://hovedopgteamet-cxdwanfbevcgcwhb.northeurope-01.azurewebsites.net/api/stall");
-                console.log("API response:", response.data); //  API response
+                console.log("API response:", response.data); // Log API response
                 if (Array.isArray(response.data)) {
                     this.stalls = response.data; 
                     console.log("Stalls loaded:", this.stalls);
-                    this.addStallMarkers(); // Add markers to  map
+                    this.addStallMarkers(); // Add markers to the map
                 } else {
                     console.error("Unexpected response format:", response.data);
                     alert("Kunne ikke hente boder. Prøv igen.");
@@ -159,8 +159,10 @@ const app = Vue.createApp({
                 alert("Kunne ikke hente boder. Tjek din API eller forbindelse.");
             } finally {
                 this.isLoading = false; 
+                document.getElementById("loading-indicator").style.display = "none"; // Hide loader
             }
-        },
+        }
+        ,
 
         addStallMarkers() {
             console.log("Adding stall markers...");
