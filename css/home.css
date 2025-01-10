@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Styling til body for centrering */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #182A61; /* Baggrundsfarve */
+    justify-content: center; /* Centrer horisontalt */
+    align-items: center; /* Centrer vertikalt */
+    height: 100vh; /* Gør, at body fylder hele skærmhøjden */
+    text-align: center;
+}
+
+/* Styling for hele karussel-sektionen */
+.carousel-container {
+    margin-top: 50px; /* Giver lidt afstand fra topsektionen */
+    border-radius: 10px;
+    overflow: hidden; /* Sikrer, at billederne er korrekt beskåret */
+}
+
+/* Sikrer, at karusselens indre matcher billedernes størrelse */
+.carousel-inner {
+    position: relative;
+    max-width: 1200px; /* Matcher bredden af billederne */
+    margin: 0 auto; /* Centrerer karussellen */
+}
+
+/* Karusselbilleder bevarer deres fulde størrelse */
+.carousel-item img {
+    width: 100%; /* Sørger for, at billederne fylder containerens bredde */
+    max-height: 400px; /* Sikrer, at højden ikke overskrider billedets oprindelige højde */
+    object-fit: contain; /* Bevarer billedets proportioner */
+}
+
+/* Tekst på billeder */
+.carousel-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent sort baggrund */
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Hover-effekt til billedteksten */
+.carousel-item:hover .carousel-caption {
+    opacity: 1;
+}
+
+/* Pileknapper */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #16375b;
+    border-radius: 50%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+}
+
+#intro {
+    background-color: #270645;
+    padding: 50px 0;
+    text-align: center;
+}
+
+#intro h1 {
+    font-size: 2rem; /* Reduceret fra 2.5rem */
+    margin-bottom: 15px; /* Mindre margin for tættere layout */
+    color: #ffd700;
+}
+
+#intro h3 {
+    font-size: 1.5rem; /* Reduceret fra 1.8rem */
+    color: #ffd700;
+    margin-bottom: 10px;
+}
+
+#intro p {
+    font-size: 1rem; /* Reduceret fra 1.2rem */
+    margin-bottom: 40px; /* Mindre margin for tættere layout */
+    color: #f4f4f4;
+}
+
+#intro .row {
+    margin-top: 20px; /* Lidt mindre afstand mellem sektionerne */
+}
+
+#intro .col-md-4 {
+    margin-bottom: 15px; /* Reduceret for at spare plads */
+}
+
+#intro .btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px; /* Lidt mindre padding for mere kompakt look */
+    text-decoration: none;
+    font-size: 1rem; /* Reduceret fra 1.2rem */
+    margin-top: 8px; /* Mindre margin for tættere layout */
+}
+
+#intro .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Styling til footer */
+footer {
+    background-color: #270645; /* Match headerens farve */
+    color: white;
+    padding: 20px 10%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px; /* Standard tekststørrelse */
+    margin-top: 30px; /* Plads over footeren */
+    border-top: 3px solid #007BFF; /* En linje for visuelt fokus */
+}
+
+footer .footer-container {
+    display: flex; /* Placer sektionerne side om side */
+    justify-content: center; /* Centrerer sektionerne vandret */
+    align-items: flex-start; /* Juster topkanten af sektionerne */
+    max-width: 1200px; /* Begrænset bredde for bedre layout */
+    margin: 0 auto; /* Centrer indholdet */
+    gap: 130px; /* Gør plads mellem sektionerne */
+}
+
+footer .footer-info {
+    display: flex;
+    flex-direction: column; /* Teksten står i kolonner */
+    text-align: left; /* Venstrestil teksten */
+    gap: 10px; /* Mellemrum mellem tekstlinjerne */
+}
+
+footer .footer-info strong {
+    color: #007BFF; /* Gør overskrifter mere iøjnefaldende */
+}
+
+footer .footer-info p {
+    margin: 5px 0; /* Juster afstand mellem linjerne */
+}
+
+footer .footer-copy {
+    color: white; /* Hvid tekst */
+    text-align: center; /* Centreret tekst */
+    font-size: 7px; /* Mindre tekststørrelse */
+    padding: 10px 0; /* Lodret padding */
+    margin-top: 10px; /* Plads mellem info-sektionerne og copy-sektionen */
+}
+
+footer a {
+    color: #007BFF; /* Blå farve til links */
+    text-decoration: none; /* Fjern understregning */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Understregning ved hover */
+}
+
+/* Responsivitet med Bootstrap */ 
+@media (max-width: 1152px) {
+
+    footer {
+        font-size: 13px; /* Justér fontstørrelse yderligere for meget små skærme */
+    }
+    footer .footer-container {
+        gap: 90px; /* Reducér mellemrummet yderligere */
+        padding: 0px; /* Mindre padding for mobil */
+    }
+    footer .footer-info {
+        gap: 2px; /* Tættere mellemrum mellem infoelementer */
+    }
+}
+
+@media (max-width: 960px) {
+
+    .carousel-item img {
+        max-height: 300px; /* Mindre højde for billeder */
+    }
+    #intro h1 {
+        font-size: 2rem; /* Mindre overskrift */
+    }
+    #intro h3 {
+        font-size: 1.75rem; /* Endnu mindre overskrift */
+    }
+    #intro p {
+        font-size: 1rem; /* Mindre tekst */
+    }
+    #intro .btn-primary {
+        padding: 6px 14px; /* Mindre padding */
+        font-size: 0.9rem; /* Reduceret font-størrelse */
+    }
+
+    footer {
+        font-size: 12px; /* Justér fontstørrelse yderligere for meget små skærme */
+    }
+    footer .footer-container {
+        gap: 80px; /* Reducér mellemrummet yderligere */
+        padding: 0px; /* Mindre padding for mobil */
+    }
+    footer .footer-info {
+        gap: 2px; /* Tættere mellemrum mellem infoelementer */
+    }
+}
+
+@media (max-width: 768px) {
+
+    .carousel-item img {
+        max-height: 250px;
+    }
+    .carousel-caption {
+        font-size: 0.9rem; /* Mindre billedtekst */
+    }
+    #intro {
+        padding: 30px 0; /* Mindre padding */
+    }
+    #intro h1 {
+        font-size: 1.8rem;
+    }
+    #intro h3 {
+        font-size: 1.4rem; /* Endnu mindre overskrift */
+    }
+    #intro p {
+        font-size: 0.9rem;
+    }
+    #intro .btn-primary {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+    }
+
+    footer {
+        font-size: 11px; /* Justér fontstørrelse yderligere for meget små skærme */
+    }
+    footer .footer-container {
+        gap: 60px; /* Reducér mellemrummet yderligere */
+        padding: 0px; /* Mindre padding for mobil */
+    }
+    footer .footer-info {
+        gap: 2px; /* Tættere mellemrum mellem infoelementer */
+    }
+}
+
+@media (max-width: 576px) {
+    
+    .carousel-item img {
+        max-height: 200px;
+    }
+    .carousel-caption {
+        font-size: 0.75rem; /* Endnu mindre billedtekst */
+        padding: 5px 10px;
+    }
+    #intro h1 {
+        font-size: 1.5rem; /* Endnu mindre overskrift */
+    }
+    #intro h3 {
+        font-size: 1.25rem; /* Endnu mindre overskrift */
+    }
+    #intro p {
+        font-size: 0.8rem;
+    }
+    #intro .btn-primary {
+        padding: 4px 10px;
+        font-size: 0.75rem;
+    }
+
+    footer {
+        font-size: 10px; /* Justér fontstørrelse yderligere for meget små skærme */
+    }
+    footer .footer-container {
+        gap: 50px; /* Reducér mellemrummet yderligere */
+        padding: 0px; /* Mindre padding for mobil */
+    }
+    footer .footer-info {
+        gap: 2px; /* Tættere mellemrum mellem infoelementer */
+    }
+}

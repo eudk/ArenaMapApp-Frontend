@@ -1,196 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* Styling til header */
-header {
-    background-color: #270645;
-    color: white;
-    padding: 10px 5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative; /* For at kunne placere Menu-billedet over navbaren */
-}
-
-/* Styling til logo-linket */
-header a .logo {
-    max-width: 100px; 
-    height: auto;
-    margin-left: 250px;
-    margin-right: 100px;
-}
-
-/* Skjult billede af menuen, vises kun under 768px */
-header .menu-icon {
-    display: none; /* Skjult som standard */
-    max-width: 50px; /* Juster størrelsen af menuikonet */
-    cursor: pointer; /* Gør det klikbart */
-    position: absolute;
-    right: 10px;
-}
-
-/* Styling til luk-knap */
-#close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 24px; /* Juster efter behov */
-    height: 24px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-#close-btn:hover {
-    transform: scale(1.2); /* Gør knappen lidt større ved hover */
-}
-
-/* Styling til slidemenupanelet */
-#slide-menu {
-    position: fixed;
-    top: 0;
-    right: -250px; /* Skjul menuen til højre */
-    width: 250px;
-    height: 100%;
-    background-color: #361b4f;
-    color: white;
-    transition: right 0.3s ease-in-out;
-    z-index: 1000;
-}
-
-#slide-menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 20px;
-}
-
-#slide-menu ul li {
-    margin: 20px 0;
-}
-
-#slide-menu ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px 15px; /* Tilføj lidt polstring for klikbart område */
-    display: block; /* Gør hele området klikbart */
-    border-radius: 5px; /* Tilføj afrundede kanter */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Gør hover-effekten glidende */
-}
-
-/* Hover-effekt */
-#slide-menu ul li a:hover {
-    background-color: #4a246a; /* Mørkere lilla nuance */
-    color: #ffd700; /* Guldtekstfarve */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Tilføj en let skygge ved hover */
-}
-
-/* Når menuen er åben */
-#slide-menu.open {
-    right: 0;
-}
-
-/* Active state styling for the active button */
-.slide-dropdown-toggle.active {
-    background-color: #4a246a;  /* Same background color as the dropdown */
-    color: #ffd700;  /* Optional: Text color */
-    font-weight: bold;  /* Make the text bold to highlight the active button */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);  /* Add a light shadow for the active button */
-}
-
-/* Styling for dropdowns when active */
-.slide-dropdown-menu {
-    display: none;  /* Hide the dropdowns by default */
-    background-color: #4a246a;  /* Same background color for the dropdown */
-    padding: 10px 0;
-    list-style: none;
-    border-radius: 5px;
-}
-
-.slide-dropdown-menu li a {
-    font-size: 14px;
-    color: white;
-    text-decoration: none;
-    padding: 8px 15px;
-    display: block;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.slide-dropdown-menu li a:hover {
-    background-color: #361b4f;
-    color: #ffd700;
-}
-
-.slide-dropdown.open .slide-dropdown-menu {
-    display: block;
-}
-
-/* Styling til navbar */
-.navbar {
-    display: flex;
-    align-items: center;
-    margin-left: 10%;
-    margin-right: 30px;
-    gap: 0px; /* Bruger gap for let justering */
-    flex-grow: 1; /* Sørger for fleksibilitet i bredden */
-    justify-content: flex-start; /* Placer navbaren tættere på logoet */
-}
-
-/* Styling af navbarens elementer */
-.navbar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-}
-
-.navbar ul li {
-    position: relative; 
-    margin: 0 10px;
-}
-
-.navbar ul li a {
-    text-decoration: none;
-    color: white;
-    padding: 10px 15px;
-    background-color: #270645;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.navbar ul li a:hover {
-    background-color: #0056b3;
-    color: #000000;
-}
-
-/* Dropdown-menu styling */
-.dropdown-menu {
-    position: absolute;
-    top: 100%; 
-    left: 0;
-    display: none; 
-    background-color: #182A61;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    list-style: none;
-    padding: 10px 0;
-    border-radius: 5px;
-    z-index: 10;
-}
-
-.dropdown-menu li a {
-    color: #000000;
-    background-color: transparent;
-    padding: 10px 20px;
-    display: block;
-    text-align: left;
-    font-size: 14px;
-    border-radius: 0;
-}
-
-.dropdown-menu li a:hover {
-    background-color: #f4f4f4;
-    color: #000000;
-}
-
 .search-container {
     display: flex;
     padding: 12px;
@@ -459,16 +268,6 @@ footer a:hover {
 /* Responsivitet med Bootstrap */ 
 @media (max-width: 1152px) {
     
-    header a .logo {
-        max-width: 100px;
-        margin-left: 120px;
-        margin-right: 50px;
-    }
-
-    .navbar ul {
-        gap: 15px;
-    }
-    
     .map-container {
         width: 75%; /* Øger bredden lidt på mellemstore skærme */
         padding: 40px; /* Juster padding */
@@ -480,8 +279,8 @@ footer a:hover {
     }
 
     .popup {
-        height: 21%;
-        width: 19%;
+        height: 25%;
+        width: 20%;
         font-size: 0.7rem;
     }
 
@@ -565,16 +364,6 @@ footer a:hover {
 
 @media (max-width: 960px) {
     
-    header a .logo {
-        max-width: 90px;
-        margin-left: 50px;
-    }
-
-    .navbar ul li a {
-        font-size: 14px;
-        padding: 8px 10px;
-    }
-    
     .map-container {
         width: 80%; /* Kortet fylder mere på små skærme */
         padding: 30px; /* Juster padding */
@@ -586,8 +375,8 @@ footer a:hover {
     }
 
     .popup {
-        height: 19%;
-        width: 21%;
+        height: 23%;
+        width: 22%;
         font-size: 0.6rem;
     }
 
@@ -670,16 +459,6 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
-    
-    .navbar {
-        display: none;
-    }
-
-    header .menu-icon {
-        display: block; /* Vis menu-ikonet */
-        margin: 40px;
-        width: 30px;
-    }
 
     /* Sørg for at slide-menuen kan vises korrekt på små skærme */
     #slide-menu {
@@ -697,9 +476,9 @@ footer a:hover {
     }
 
     .popup {
-        height: 18%;
-        width: 19%;
         font-size: 0.5rem;
+        height: 20%;
+        width: 25%;
     }
 
     .popup-link {
@@ -782,30 +561,6 @@ footer a:hover {
 
 @media (max-width: 576px) {
     
-    .navbar {
-        display: none;
-    }
-
-    header .menu-icon {
-        display: block; /* Vis menu-ikonet */
-        margin: 40px;
-        width: 30px;
-    }
-    
-    header .logo {
-        max-width: 90px;
-    }
-
-    .navbar ul li a {
-        font-size: 14px;
-        padding: 8px 10px;
-    }
-
-    header .login button {
-        font-size: 14px;
-        padding: 8px 15px;
-    }
-    
     .map-container {
         width: 90%; /* Kortet fylder hele skærmen */
         padding: 10px; /* Mindre padding */
@@ -817,9 +572,9 @@ footer a:hover {
     }
 
     .popup {
-        height: 17%;
-        width: 18%;
         font-size: 0.4rem;
+        height: 19%;
+        width: 33%;
     }
 
     .popup-link {
@@ -832,7 +587,6 @@ footer a:hover {
         display: inline-block;
         width: 10px; /* Juster størrelse af luk-knappen */
         height: 10px;
-        background-image: url('../images/Close.png'); /* Sørg for at angive korrekt sti til billedet */
         background-size: cover; /* Sørger for, at billedet fylder knappen */
         background-repeat: no-repeat;
         margin-top: 10px;
