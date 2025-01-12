@@ -52,17 +52,7 @@ const app = Vue.createApp({
                 this.basket.splice(index, 1);
             }
         },
-        async generateQrCode(orderId) {
-            try {
-                const qrCodeUrl = await QRCode.toDataURL(`${this.apiUrl}/api/order/${orderId}/complete`);
-                console.log("QR Code generated:", qrCodeUrl);
-                return qrCodeUrl;
-            } catch (error) {
-                console.error("Failed to generate QR Code:", error);
-                throw error;
-            }
-        },
-        async sendEmail(orderPayload, orderId, qrCodeUrl) {
+        async sendEmail(orderPayload, orderId) {
             const orderDetails = orderPayload.orderItems
                 .map((item) => `MenuItem ID: ${item.menuItemId}, Quantity: ${item.quantity}`)
                 .join(", ");
@@ -73,15 +63,14 @@ const app = Vue.createApp({
                 order_id: orderId,
                 order_details: orderDetails,
                 total_price: `${totalPrice} DKK`,
-                qr_code: qrCodeUrl,
             };
 
             try {
                 const emailResponse = await emailjs.send(
-                    "service_rfghgq5", 
-                    "template_gej0jti", 
+                    "service_rfghgq5", // Replace with your EmailJS service ID
+                    "template_gej0jti", // Replace with your EmailJS template ID
                     templateParams,
-                    "VwBJgY9n-qoC6abQv" 
+                    "VwBJgY9n-qoC6abQv" // Replace with your EmailJS user ID
                 );
                 console.log("Email sent successfully:", emailResponse);
             } catch (error) {
@@ -112,15 +101,12 @@ const app = Vue.createApp({
 
                 if (response.status === 201) {
                     console.log("Order created successfully.");
-                    
-                    // Generate QR Code
-                    const qrCodeUrl = await this.generateQrCode(response.data.orderId);
 
                     // Send Email
-                    await this.sendEmail(orderPayload, response.data.orderId, qrCodeUrl);
+                    await this.sendEmail(orderPayload, response.data.orderId);
 
                     // Redirect to success page
-                    window.location.href = `order-success.html?qrCode=${encodeURIComponent(qrCodeUrl)}&email=${encodeURIComponent(this.email)}&id=${response.data.orderId}`;
+                    window.location.href = `order-success.html?email=${encodeURIComponent(this.email)}&id=${response.data.orderId}`;
                 } else {
                     alert("Failed to place the order. Please try again.");
                 }
@@ -134,7 +120,7 @@ const app = Vue.createApp({
     },
     mounted() {
         this.fetchMenu();
-        emailjs.init("VwBJgY9n-qoC6abQv"); 
+        emailjs.init("VwBJgY9n-qoC6abQv"); // Replace with your EmailJS user ID
     },
 });
 
